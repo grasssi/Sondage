@@ -31,6 +31,8 @@ import { ChartsModule } from 'ng2-charts';
 import { ToasterModule, ToasterService } from 'angular2-toaster';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ResetpasswordComponent } from './views/reset/resetpassword.component';
+import { ChangepasswordComponent } from './views/changepassword/changepassword.component';
 
 @NgModule({
   imports: [
@@ -57,7 +59,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ResetpasswordComponent,
+    ChangepasswordComponent
   ],
   providers: [{
     provide: LocationStrategy,

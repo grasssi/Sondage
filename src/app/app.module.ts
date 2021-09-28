@@ -10,8 +10,8 @@ import { AppComponent } from './app.component';
 import { DefaultLayoutComponent } from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
-import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 import {
   AppAsideModule,
@@ -30,9 +30,9 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { ToasterModule, ToasterService } from 'angular2-toaster';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ResetpasswordComponent } from './views/reset/resetpassword.component';
-import { ChangepasswordComponent } from './views/changepassword/changepassword.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ResetpasswordComponent } from './reset/resetpassword.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
 
 @NgModule({
   imports: [
@@ -50,7 +50,8 @@ import { ChangepasswordComponent } from './views/changepassword/changepassword.c
     ChartsModule,
     ToasterModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
 
   ],
   declarations: [

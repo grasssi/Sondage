@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserserviceService } from '../../services/userservice.service';
+import { UserserviceService } from '../services/userservice.service';
 
 @Component({
   selector: 'app-dashboard',

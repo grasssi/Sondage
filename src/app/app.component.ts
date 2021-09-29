@@ -10,13 +10,13 @@ import { ToasterConfig, ToasterService } from 'angular2-toaster';
 })
 export class AppComponent implements OnInit {
 
-  
+
   public toasterconfig: ToasterConfig =
     new ToasterConfig({
       tapToDismiss: true,
       timeout: 5000
     });
-    
+
   constructor(private router: Router, private toasterService: ToasterService) { }
 
   ngOnInit() {

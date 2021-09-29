@@ -10,8 +10,8 @@ import { AppComponent } from './app.component';
 import { DefaultLayoutComponent } from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
-import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 import {
   AppAsideModule,
@@ -29,6 +29,11 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { ToasterModule, ToasterService } from 'angular2-toaster';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ResetpasswordComponent } from './reset/resetpassword.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { TokenInterceptor } from './services/token.interceptor';
 
 @NgModule({
   imports: [
@@ -44,7 +49,11 @@ import { ToasterModule, ToasterService } from 'angular2-toaster';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    ToasterModule
+    ToasterModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
+
   ],
   declarations: [
     AppComponent,
@@ -52,14 +61,21 @@ import { ToasterModule, ToasterService } from 'angular2-toaster';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ResetpasswordComponent,
+    ChangepasswordComponent
   ],
   providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  },
+  {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   },
-  ToasterService
-],
-  bootstrap: [ AppComponent ]
+    ToasterService
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

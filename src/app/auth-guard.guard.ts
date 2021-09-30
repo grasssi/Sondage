@@ -12,7 +12,6 @@ export class AuthGuardGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-    console.log('guard', this.auth.isauth);
 
     return this.auth.isauth;
   }

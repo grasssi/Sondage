@@ -33,7 +33,7 @@ export const routes: Routes = [
       title: 'Register Page'
     }
   },
-  {
+   {
     path: '404',
     component: P404Component,
     data: {

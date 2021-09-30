@@ -23,4 +23,7 @@ export class AuthserviceService {
     //const password={newPass:body,resetlink:resetlink}
     return this.httpClient.put(`http://localhost:3000/api/v1/resetpassword`, body, { headers })
   }
+  register(body: any) {
+    return this.httpClient.post(`http://localhost:3000/api/v1/register`, body)
+  }
 }

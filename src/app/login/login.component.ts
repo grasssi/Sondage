@@ -30,9 +30,10 @@ export class LoginComponent implements OnInit {
 
   auth() {
     this.authservice.login(this.profileForm.value).subscribe((response) => {
+      const token = Object.values(response)[1];
+    this.authservice.isAuthenticated(token);
       this.router.navigate(['/dashboard']);
-
-    },
+         },
       (error) => {
         console.log(error);
       }

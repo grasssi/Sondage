@@ -16,19 +16,19 @@ export class RegisterComponent {
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
-  constructor(private UserService: UserserviceService, private router: Router,private authservice: AuthserviceService ) { }
+  constructor(private UserService: UserserviceService, private router: Router, private authservice: AuthserviceService) { }
   ngOnInit(): void {
   }
   register() {
     this.submitted = true;
     if (this.profileForm.invalid) { return };
     //with Services
-     this.authservice.register(this.profileForm.value).subscribe((response) => {
+    this.authservice.register(this.profileForm.value).subscribe((response) => {
       this.router.navigate(['/login']);
     },
       (error) => {
         console.log(error);
       }
     );
-     }
+  }
 }

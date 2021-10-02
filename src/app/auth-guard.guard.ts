@@ -1,19 +1,37 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { AuthserviceService } from './services/authservice.service';
+import jwtDecode from 'jwt-decode';
+import jwt_decode from "jwt-decode";
+import { decode } from 'querystring';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuardGuard implements CanActivate {
-  constructor(public auth: AuthserviceService, public router: Router) { }
+  constructor(public router: Router) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-
-    return this.auth.isauth;
+    const token = localStorage.getItem('token')
+    if (token) {
+      const isexpired = this.isExpiredToken(token)
+      if (!isexpired) {
+        return true
+      } else {
+        this.router.navigate(['/login'])
+        return false;
+      }
+    } else {
+      this.router.navigate(['/login'])
+      return false;
+    }
   }
 
+  isExpiredToken(token): boolean {
+    const decoded:any=jwt_decode(token);
+    return Math.floor(new Date().getTime()/1000)>=decoded.exp
+  }
 }
+

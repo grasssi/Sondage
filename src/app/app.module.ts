@@ -34,7 +34,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ResetpasswordComponent } from './reset/resetpassword.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { TokenInterceptor } from './services/token.interceptor';
-
+import { ValidatorsModule } from "ngx-validators";
 @NgModule({
   imports: [
     BrowserModule,
@@ -52,7 +52,8 @@ import { TokenInterceptor } from './services/token.interceptor';
     ToasterModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ValidatorsModule
 
   ],
   declarations: [

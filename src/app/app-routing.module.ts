@@ -13,57 +13,34 @@ import { ChangepasswordComponent } from './changepassword/changepassword.compone
 import { AuthGuardGuard } from './auth-guard.guard';
 
 export const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'dashboard',
-  //   canActivate:[AuthGuardGuard],
-  //   pathMatch: 'full',
-  // },
   {
     path: 'changepassword/:resetlink',
-    component: ChangepasswordComponent,
-    data: {
-      title: 'Register Page'
-    }
+    component: ChangepasswordComponent
   },
   {
     path: 'reset',
-    component: ResetpasswordComponent,
-    data: {
-      title: 'Register Page'
-    }
+    component: ResetpasswordComponent
   },
    {
     path: '404',
-    component: P404Component,
-    data: {
-      title: 'Page 404'
-    }
+    component: P404Component
   },
   {
     path: '500',
-    component: P500Component,
-    data: {
-      title: 'Page 500'
-    }
+    component: P500Component
   },
   {
     path: 'login',
-    component: LoginComponent,
-    data: {
-      title: 'Login Page'
-    }
+    component: LoginComponent
   },
   {
     path: 'register',
-    component: RegisterComponent,
-    data: {
-      title: 'Register Page'
-    }
+    component: RegisterComponent
   },
   {
     path: '',
     component: DefaultLayoutComponent,
+    canActivate:[AuthGuardGuard],
     data: {
       title: 'Home'
     },
@@ -82,7 +59,6 @@ export const routes: Routes = [
       },
       {
         path: 'dashboard',
-        canActivate:[AuthGuardGuard],
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {

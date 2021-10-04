@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthserviceService } from '../services/authservice.service';
-import { UserserviceService } from '../services/userservice.service';
-import { PasswordValidators } from 'ngx-validators'
 import { ToasterService } from 'angular2-toaster';
 
 @Component({

@@ -53,7 +53,8 @@ import { ValidatorsModule } from "ngx-validators";
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    ValidatorsModule
+    ValidatorsModule,
+
 
   ],
   declarations: [
@@ -64,7 +65,9 @@ import { ValidatorsModule } from "ngx-validators";
     LoginComponent,
     RegisterComponent,
     ResetpasswordComponent,
-    ChangepasswordComponent
+    ChangepasswordComponent,
+
+
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

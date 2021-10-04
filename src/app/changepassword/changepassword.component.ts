@@ -23,10 +23,10 @@ export class ChangepasswordComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  changepwd() {
+  changepassword() {
     this.profileForm.value.resetlink = this.activatetRoute.snapshot.params.resetlink;
-    this.authservice.changePwd(this.profileForm.value).subscribe((response: any) => {
-      this.toasterService.pop('success', 'Success Login', response.message);
+    this.authservice.changepassword(this.profileForm.value).subscribe((response: any) => {
+      this.toasterService.pop('success', 'Success', response.message);
       this.router.navigate(['/login']);
     },
       (error) => {

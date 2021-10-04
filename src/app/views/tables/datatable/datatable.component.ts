@@ -16,6 +16,8 @@ export class DataTableComponent {
         (data: TableData) => {
           setTimeout(() => {
             this.data = [...data];
+            console.log(this.data);
+
             }, 1000);
         }, // success path
         error => this.error = error // error path

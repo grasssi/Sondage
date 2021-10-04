@@ -21,7 +21,7 @@ export const routes: Routes = [
     path: 'reset',
     component: ResetpasswordComponent
   },
-   {
+  {
     path: '404',
     component: P404Component
   },
@@ -40,7 +40,7 @@ export const routes: Routes = [
   {
     path: '',
     component: DefaultLayoutComponent,
-    canActivate:[AuthGuardGuard],
+    canActivate: [AuthGuardGuard],
     data: {
       title: 'Home'
     },
@@ -100,7 +100,15 @@ export const routes: Routes = [
       {
         path: 'widgets',
         loadChildren: () => import('./views/widgets/widgets.module').then(m => m.WidgetsModule)
-      }
+      },
+      {
+        path: 'users',
+        loadChildren: () => import('./views/users/users.module').then(m => m.UsersModule)
+      },
+      {
+        path: 'owners',
+        loadChildren: () => import('./views/owners/owners.module').then(m => m.OwnersModule)
+      },
     ]
   },
   { path: '**', component: P404Component }

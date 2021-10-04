@@ -27,8 +27,7 @@ export class UpdateUserComponent implements OnInit {
     this.id = this.activatetRoute.snapshot.params.id;
       this.usersService.getuser(this.id).subscribe((response:any) => {
         this.profileForm.patchValue(response)
-        console.log(response);
-    },
+      },
     (error) => {
       console.log(error);
     }

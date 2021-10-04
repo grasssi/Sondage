@@ -11,10 +11,10 @@ export class ListUsersComponent implements OnInit {
   public filterQuery = '';
   error: any;
   public data: TableData;
-  constructor(private dataTableService: UserService) {}
+  constructor(private usersService: UserService) {}
 
   ngOnInit(): void {
-    this.dataTableService.users().subscribe(
+    this.usersService.users().subscribe(
         (data: TableData) => {
           setTimeout(() => {
             this.data = [...data];
@@ -40,7 +40,7 @@ export class ListUsersComponent implements OnInit {
 
   onDelete(id: number) {
     //with Services
-    this.dataTableService.removeuser(id).subscribe((response) => {
+    this.usersService.removeuser(id).subscribe((response) => {
       this.ngOnInit();
     },
       (error) => {

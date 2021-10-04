@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 //DataTable
 import { DataTableModule } from 'angular2-datatable';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DataFilterPipe } from '../tables/datatable/datafilterpipe';
 
@@ -30,7 +30,8 @@ import { UsersPipesPipe } from './users-pipes.pipe';
     UsersRoutingModule,
     DataTableModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ]
 })
 export class UsersModule { }

@@ -48,4 +48,13 @@ export class UserService {
   removeuser(id: any) {
     return this.httpClient.delete(`${this.baseUrl}/removeuser/${id}`)
 }
+getuser(id:any){
+  return this.httpClient.get(`${this.baseUrl}/getuser/${id}`)
+}
+
+updateuser(id:any,body:any)
+{
+  return this.httpClient.put(`${this.baseUrl}/updateuser/${id}`,body)
+
+}
 }

@@ -43,8 +43,10 @@
             <td>{{item.role}}</td>
             <td>
               <button type="button" [routerLink]="['/users/update',item._id]" class="btn btn-info"><i
-                  class="bi bi-hurricane"></i></button>
-              <button class="btn btn-danger" (click)="onDelete(item._id)"><i class="bi bi-trash-fill"></i></button>
+                  class="fa fa-refresh fa-lgs"></i>
+              </button>
+              <button class="btn btn-danger" (click)="onDelete(item._id)"><i class="fa fa-remove fa-lg"></i>
+              </button>
             </td>
           </tr>
         </tbody>

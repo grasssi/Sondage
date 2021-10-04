@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     }
-  auth() {
+    login() {
     this.submitted = true;
     if(this.profileForm.invalid)
     {

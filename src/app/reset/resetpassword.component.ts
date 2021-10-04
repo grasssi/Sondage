@@ -20,12 +20,12 @@ export class ResetpasswordComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  forgot() {
+  resetpassword() {
     this.submitted = true
     if (this.profileForm.invalid) {
       return
     } else {
-      this.authservice.Forgot(this.profileForm.value).subscribe((response: any) => {
+      this.authservice.resetpassword(this.profileForm.value).subscribe((response: any) => {
         this.toasterService.pop('success', 'Success Login', response.message);
         this.router.navigate(['/login']);
       },

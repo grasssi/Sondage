@@ -10,7 +10,7 @@ import { AuthserviceService } from '../services/authservice.service';
 })
 export class LoginComponent implements OnInit {
   submitted: boolean = false;
-  profileForm = new FormGroup({
+  loginForm = new FormGroup({
     email: new FormControl('', Validators.required),
     password: new FormControl(''),
 
@@ -24,11 +24,11 @@ export class LoginComponent implements OnInit {
     }
     login() {
     this.submitted = true;
-    if(this.profileForm.invalid)
+    if(this.loginForm.invalid)
     {
       return;
     }
-    this.authservice.login(this.profileForm.value).subscribe((response:any) => {
+    this.authservice.login(this.loginForm.value).subscribe((response:any) => {
       this.toasterService.pop('success', 'Success Login', response.message);
       localStorage.setItem('token', response.token)
       this.router.navigate(['/dashboard']);

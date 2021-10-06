@@ -11,7 +11,7 @@ import { AuthserviceService } from '../services/authservice.service';
 })
 export class ChangepasswordComponent implements OnInit {
   submitted = false;
-  profileForm = new FormGroup({
+  mailForm = new FormGroup({
     newPass: new FormControl(''),
     resetlink: new FormControl('')
 
@@ -24,8 +24,8 @@ export class ChangepasswordComponent implements OnInit {
   ngOnInit(): void {
   }
   changepassword() {
-    this.profileForm.value.resetlink = this.activatetRoute.snapshot.params.resetlink;
-    this.authservice.changepassword(this.profileForm.value).subscribe((response: any) => {
+    this.mailForm.value.resetlink = this.activatetRoute.snapshot.params.resetlink;
+    this.authservice.changepassword(this.mailForm.value).subscribe((response: any) => {
       this.toasterService.pop('success', 'Success', response.message);
       this.router.navigate(['/login']);
     },

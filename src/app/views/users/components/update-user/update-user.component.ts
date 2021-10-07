@@ -13,7 +13,7 @@ import { UserService } from '../../../../services/user.service';
 export class UpdateUserComponent implements OnInit {
   submitted = false;
   id: any
-  profileForm = new FormGroup({
+  userForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
@@ -26,7 +26,7 @@ export class UpdateUserComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.activatetRoute.snapshot.params.id;
       this.usersService.getuser(this.id).subscribe((response:any) => {
-        this.profileForm.patchValue(response)
+        this.userForm.patchValue(response)
       },
     (error) => {
       console.log(error);
@@ -36,10 +36,10 @@ export class UpdateUserComponent implements OnInit {
 
   updateuser() {
     this.submitted = true;
-    if (this.profileForm.invalid) { return };
+    if (this.userForm.invalid) { return };
     //with services
-    console.log(this.profileForm.value);
-    this.usersService.updateuser(this.id, this.profileForm.value).subscribe((response) =>{
+    console.log(this.userForm.value);
+    this.usersService.updateuser(this.id, this.userForm.value).subscribe((response) =>{
       this.router.navigate(['users/listusers'])
     },
       (error) => {

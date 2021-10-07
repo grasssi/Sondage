@@ -10,7 +10,7 @@ import { ToasterService } from 'angular2-toaster';
 })
 export class RegisterComponent {
   submitted = false;
-  profileForm = new FormGroup({
+  registerForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
@@ -29,9 +29,9 @@ export class RegisterComponent {
     // console.log(this.profileForm.validator);
     // console.log(this.profileForm.hasError('mismatchedPasswords'));
 
-    if (this.profileForm.invalid) { return };
+    if (this.registerForm.invalid) { return };
     //with Services
-       this.authservice.register(this.profileForm.value).subscribe((response:any) => {
+       this.authservice.register(this.registerForm.value).subscribe((response:any) => {
         this.toasterService.pop('success', 'Success Login', response.message);
            this.router.navigate(['/login']);
     },

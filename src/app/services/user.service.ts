@@ -13,7 +13,7 @@ export interface UserData {
   role: string;
 }
 
-export interface TableData extends Array<UserData> {}
+export interface TableData extends Array<UserData> { }
 
 @Injectable({
   providedIn: 'root'
@@ -22,11 +22,11 @@ export interface TableData extends Array<UserData> {}
 export class UserService {
   baseUrl = environment.baseUrl;
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
   users() {
     return this.httpClient.get<TableData>(`${this.baseUrl}/allusers`).pipe(
       retry(3), // retry a failed request up to 3 times
-        catchError(this.handleError)
+      catchError(this.handleError)
     )
   }
   private handleError(error: HttpErrorResponse) {
@@ -47,14 +47,13 @@ export class UserService {
 
   removeuser(id: any) {
     return this.httpClient.delete(`${this.baseUrl}/removeuser/${id}`)
-}
-getuser(id:any){
-  return this.httpClient.get(`${this.baseUrl}/getuser/${id}`)
-}
+  }
+  getuser(id: any) {
+    return this.httpClient.get(`${this.baseUrl}/getuser/${id}`)
+  }
 
-updateuser(id:any,body:any)
-{
-  return this.httpClient.put(`${this.baseUrl}/updateuser/${id}`,body)
+  updateuser(id: any, body: any) {
+    return this.httpClient.put(`${this.baseUrl}/updateuser/${id}`, body)
 
-}
+  }
 }

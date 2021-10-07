@@ -39,4 +39,8 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
 }

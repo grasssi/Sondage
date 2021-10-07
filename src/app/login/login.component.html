@@ -14,14 +14,14 @@
                       <span class="input-group-text"><i class="icon-user"></i></span>
                     </div>
                     <input type="text" class="form-control" placeholder="email" autocomplete="email"
-                      formControlName="email" required>
+                      formControlName="email"  required formControlName="email" [ngClass]="{'is-valid': submitted && !loginForm.controls.email.errors ,'is-invalid': submitted && loginForm.controls.email.errors}">
                   </div>
                   <div class="input-group mb-4">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="icon-lock"></i></span>
                     </div>
                     <input type="password" class="form-control" placeholder="Password" autocomplete="current-password"
-                      formControlName="password" required>
+                      formControlName="password"  required formControlName="password" [ngClass]="{'is-valid': submitted && !loginForm.controls.password.errors ,'is-invalid': submitted && loginForm.controls.password.errors}">
                   </div>
                   <div class="row">
                     <div class="col-6">

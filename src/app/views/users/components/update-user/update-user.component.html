@@ -14,7 +14,7 @@
                   </div>
                   <input type="text" class="form-control" placeholder="firstName" autocomplete="firstName"
                     formControlName="firstName" required
-                    [ngClass]="{'is-valid': submitted && !profileForm.controls.firstName.errors ,'is-invalid': submitted && profileForm.controls.firstName.errors}">
+                    [ngClass]="{'is-valid': submitted && !userForm.controls.firstName.errors ,'is-invalid': submitted && userForm.controls.firstName.errors}">
                 </div>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
@@ -22,7 +22,7 @@
                   </div>
                   <input type="text" class="form-control" placeholder="LastName" autocomplete="LastName"
                     formControlName="lastName" required
-                    [ngClass]="{'is-valid': submitted && !profileForm.controls.lastName.errors ,'is-invalid': submitted && profileForm.controls.lastName.errors}">
+                    [ngClass]="{'is-valid': submitted && !userForm.controls.lastName.errors ,'is-invalid': submitted && userForm.controls.lastName.errors}">
                 </div>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
@@ -30,7 +30,7 @@
                   </div>
                   <input type="text" class="form-control" placeholder="Email" autocomplete="email"
                     formControlName="email" required
-                    [ngClass]="{'is-valid': submitted && !profileForm.controls.email.errors ,'is-invalid': submitted && profileForm.controls.email.errors}">
+                    [ngClass]="{'is-valid': submitted && !userForm.controls.email.errors ,'is-invalid': submitted && userForm.controls.email.errors}">
                 </div>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
@@ -38,7 +38,7 @@
                   </div>
                   <input type="text" class="form-control" placeholder="role" autocomplete="role"
                     formControlName="role" required
-                    [ngClass]="{'is-valid': submitted && !profileForm.controls.role.errors ,'is-invalid': submitted && profileForm.controls.role.errors}">
+                    [ngClass]="{'is-valid': submitted && !userForm.controls.role.errors ,'is-invalid': submitted && userForm.controls.role.errors}">
                 </div>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
@@ -46,7 +46,7 @@
                   </div>
                   <input type="password" class="form-control" placeholder="Password" autocomplete="new-password"
                     formControlName="password" required
-                    [ngClass]="{'is-valid': submitted && !profileForm.controls.password.errors ,'is-invalid': submitted && profileForm.controls.password.errors}">
+                    [ngClass]="{'is-valid': submitted && !userForm.controls.password.errors ,'is-invalid': submitted && userForm.controls.password.errors}">
                 </div>
                 <div class="input-group mb-4">
                   <div class="input-group-prepend">
@@ -54,7 +54,7 @@
                   </div>
                   <input type="password" class="form-control" placeholder="Repeat password" autocomplete="new-password"
                     required formControlName="repassword"
-                    [ngClass]="{'is-valid': submitted && !profileForm.controls.repassword.errors ,'is-invalid': submitted && profileForm.controls.repassword.errors}">
+                    [ngClass]="{'is-valid': submitted && !userForm.controls.repassword.errors ,'is-invalid': submitted && userForm.controls.repassword.errors}">
                 </div>
                 <button type="button" class="btn btn-block btn-success" (click)="updateuser()">Update</button>
               </form>

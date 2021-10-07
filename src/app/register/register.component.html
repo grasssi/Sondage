@@ -41,7 +41,7 @@
                     <span class="input-group-text"><i class="icon-lock"></i></span>
                   </div>
                   <input type="password" class="form-control" placeholder="Repeat password" autocomplete="new-password"
-                    required formControlName="repassword" [ngClass]="{'is-valid': submitted && !registerForm.controls.repassword.errors ,'is-invalid': submitted && register.controls.repassword.errors}">
+                    required formControlName="repassword" [ngClass]="{'is-valid': submitted && !registerForm.controls.repassword.errors ,'is-invalid': submitted && registerForm.controls.repassword.errors}">
                   </div>
                 <button type="button" class="btn btn-block btn-success" (click)="register()">Create Account</button>
               </form>

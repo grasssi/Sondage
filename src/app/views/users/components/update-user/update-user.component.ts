@@ -38,7 +38,6 @@ export class UpdateUserComponent implements OnInit {
     this.submitted = true;
     if (this.userForm.invalid) { return };
     //with services
-    console.log(this.userForm.value);
     this.usersService.updateuser(this.id, this.userForm.value).subscribe((response) =>{
       this.router.navigate(['users/listusers'])
     },

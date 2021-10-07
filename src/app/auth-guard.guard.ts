@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import jwtDecode from 'jwt-decode';
 import jwt_decode from "jwt-decode";
-import { decode } from 'querystring';
 
 
 @Injectable({

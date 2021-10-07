@@ -11,7 +11,7 @@ import { matchingPasswords } from '../validators/matchingPasswords';
 })
 export class RegisterComponent {
   submitted = false;
-  registerForm: FormGroup = new FormGroup({});;
+  registerForm: FormGroup = new FormGroup({});
 
   constructor(private toasterService: ToasterService, private router: Router, private authservice: AuthserviceService) { }
   ngOnInit(): void {
@@ -20,26 +20,25 @@ export class RegisterComponent {
       lastName: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
-      repassword: new FormControl('', Validators.required),
+      repassword: new FormControl('')
     },
-    {
-
-      validators: [matchingPasswords]
-
-    }
+      {
+        validators: [matchingPasswords]
+      }
     );
   }
   register() {
     this.submitted = true;
-console.log(this.registerForm.errors?.mismatchedPasswords);
-    if (this.registerForm.invalid) { return };
+    if (this.registerForm.invalid) {
+      return
+    };
     //with Services
-       this.authservice.register(this.registerForm.value).subscribe((response:any) => {
-        this.toasterService.pop('success', 'Success Login', response.message);
-           this.router.navigate(['/login']);
+    this.authservice.register(this.registerForm.value).subscribe((response: any) => {
+      this.toasterService.pop('success', 'Success Login', response.message);
+      this.router.navigate(['/login']);
     },
-      (error:any) => {
-      this.toasterService.pop('error', 'Error', error.error.message);
+      (error: any) => {
+        this.toasterService.pop('error', 'Error', error.error.message);
         console.log(error);
       }
     );

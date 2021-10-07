@@ -7,11 +7,8 @@ export function matchingPasswords (control: AbstractControl): {[key: string]: bo
 
     // if no values, valid
     if (!newPassword?.value || !confirmPassword?.value) {
-      return null;
-    }else if (newPassword.value == confirmPassword.value){
-return { 'mismatchedPasswords': false };
-}else
-return { 'mismatchedPasswords': true };
+      return { 'mismatchedPasswords': true };
+    }
     // if values match return null, else 'mismatchedPasswords:true'
-   // return newPassword.value === confirmPassword.value ? null : { 'mismatchedPasswords': true };
+    return newPassword.value === confirmPassword.value ? null : { 'mismatchedPasswords': true };
   }

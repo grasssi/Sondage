@@ -36,8 +36,8 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">@</span>
                   </div>
-                  <input type="text" class="form-control" placeholder="role" autocomplete="role"
-                    formControlName="role" required
+                  <input type="text" class="form-control" placeholder="role" autocomplete="role" formControlName="role"
+                    required
                     [ngClass]="{'is-valid': submitted && !userForm.controls.role.errors ,'is-invalid': submitted && userForm.controls.role.errors}">
                 </div>
                 <div class="input-group mb-3">
@@ -53,8 +53,8 @@
                     <span class="input-group-text"><i class="icon-lock"></i></span>
                   </div>
                   <input type="password" class="form-control" placeholder="Repeat password" autocomplete="new-password"
-                    required formControlName="repassword"
-                    [ngClass]="{'is-valid': submitted && !userForm.controls.repassword.errors ,'is-invalid': submitted && userForm.controls.repassword.errors}">
+                    formControlName="repassword"
+                    [ngClass]="{'is-valid': !userForm.errors?.mismatchedPasswords && submitted ,'is-invalid':this.userForm.errors?.mismatchedPasswords && submitted}">
                 </div>
                 <button type="button" class="btn btn-block btn-success" (click)="updateuser()">Update</button>
               </form>

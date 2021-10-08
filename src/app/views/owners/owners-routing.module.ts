@@ -13,9 +13,13 @@ const routes: Routes = [
     component: AddOwnerComponent
   },
   {
-    path: 'updateowner/:id',
+    path: 'update/:id',
     component: UpdateOwnerComponent
   },
+  {
+    path: 'listowners',
+    component: UpdateOwnerComponent
+  }
 ];
 
 @NgModule({

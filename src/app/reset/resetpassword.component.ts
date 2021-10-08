@@ -30,7 +30,7 @@ export class ResetpasswordComponent implements OnInit {
         this.router.navigate(['/login']);
       },
         (error: any) => {
-          this.toasterService.pop('error', 'Error', error.error.message);
+          this.toasterService.pop('error', 'Error', error.error.error);
           console.log(error);
         }
       );

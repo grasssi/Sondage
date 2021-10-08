@@ -1,1 +1,99 @@
-<p>add-owner works!</p>
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="icon-note"></i> Form Validation
+          <a class="badge badge-danger" href="https://coreui.io/pro/">CoreUI Pro Component</a>
+          <div class="card-header-actions">
+            <a class="card-header-action" href="https://angular.io/guide/form-validation" target="_blank">
+              <small class="text-muted">docs</small>
+            </a>
+          </div>
+        </div>
+        <div class="card-body">Angular Form Validation
+          <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <h6>Simple Form</h6>
+              <form [formGroup]="ownerForm" novalidate (ngSubmit)="onSubmit()" class="needs-validation">
+                <div class="form-group">
+                  <label class="col-form-label" for="firstName">First name</label>
+                  <input class="form-control" id="firstName" type="text" formControlName="firstName"
+                    placeholder="First name" autocomplete="given-name" required autofocus
+                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors, 'is-valid': f.firstName.touched && !f.firstName.errors }" />
+                  <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+                    <div *ngIf="f['firstName'].errors.required">First Name is required</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label" for="lastName">Last name</label>
+                  <input class="form-control" id="lastName" type="text" formControlName="lastName"
+                    placeholder="Last name" autocomplete="family-name" required
+                    [ngClass]="{ 'is-invalid': submitted && f.lastName.errors, 'is-valid': f.lastName.touched && !f.lastName.errors }" />
+                  <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+                    <div *ngIf="f['lastName'].errors.required">Last Name is required</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label" for="email">Email</label>
+                  <input class="form-control" id="email" type="text" formControlName="email" placeholder="Email"
+                    autocomplete="email" required
+                    [ngClass]="{ 'is-invalid': submitted && f.email.errors, 'is-valid': f.email.touched && !f.email.errors }" />
+                  <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                    <div *ngIf="f['email'].errors.required">Email is required</div>
+                    <div *ngIf="f['email'].errors.email">{{formErrors.email.email}}</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-form-label" for="service">Service</label>
+                  <select ng-model="selectedItem" class="form-control" placeholder="service" autocomplete="service"
+                    formControlName="service" required
+                    [ngClass]="{ 'is-invalid': submitted && f.service.errors, 'is-valid': f.service.touched && !f.service.errors }">
+                    <option *ngFor="let user of myRes" value="{{user._id}}">{{user.nomService}}</option>
+                  </select>
+
+                  <div *ngIf="submitted && f['service'].errors" class="invalid-feedback">
+                    <div *ngIf="f['service'].errors.required">service is required</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="accept" formControlName="accept" required
+                      [ngClass]="{ 'is-invalid': submitted && f.accept.errors, 'is-valid': !f.accept.errors }" />
+                    <label class="custom-control-label" for="accept">I accept the terms of use</label>
+                    <div *ngIf="submitted && f['accept'].errors" class="invalid-feedback">
+                      <div *ngIf="f['accept'].errors.required">You have to accept our Terms and Conditions</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary mr-1" (click)="addowner()"
+                    [disabled]="ownerForm.pristine || ownerForm.invalid">Submit</button>
+                  <button class="btn btn-success mr-1" type="submit" [disabled]="ownerForm.valid">Validate</button>
+                  <button class="btn btn-danger" type="reset" [disabled]="ownerForm.pristine && !submitted"
+                    (click)="onReset()">Reset</button>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-6">
+              <div class="card bg-secondary" [ngClass]="{ 'bg-info' : ownerForm.valid }">
+                <div class="card-body">
+                  <pre>Value: <code>{{ ownerForm.value | json }}</code></pre>
+                  <p>
+                    Status: {{ ownerForm.status }}
+                  </p>
+                  <p>
+                    Errors: {{ ownerForm.errors | json }}
+
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

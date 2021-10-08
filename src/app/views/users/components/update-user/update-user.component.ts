@@ -1,8 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../../services/user.service';
 import { matchingPasswords } from '../../../../validators/matchingPasswords';
+import { ValidationService } from '../../../../validators/validation.service';
+
+/** passwords must match - custom validator */
+export const confirmPasswordValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
+  const password = control.get('password');
+  const confirm = control.get('confirmPassword');
+  return password && confirm && password.value === confirm.value ? null : { 'passwordMismatch': true };
+};
 
 @Component({
   selector: 'app-update-user',
@@ -14,24 +22,27 @@ import { matchingPasswords } from '../../../../validators/matchingPasswords';
 export class UpdateUserComponent implements OnInit {
   submitted = false;
   id: any
+  formErrors: any
   userForm: FormGroup = new FormGroup({});;
-  constructor(private activatetRoute: ActivatedRoute, private router: Router, private usersService: UserService) { }
+  constructor(private activatetRoute: ActivatedRoute,
+    private router: Router,
+    private usersService: UserService,
+    public vf: ValidationService) {
+    this.formErrors = this.vf.errorMessages;
+  }
 
   ngOnInit(): void {
     this.userForm = new FormGroup({
-      firstName: new FormControl('', Validators.required),
+      firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      password: new FormControl('****', Validators.required),
-      repassword: new FormControl(''),
-      role: new FormControl(''),
-    },
-      {
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(this.vf.formRules.passwordMin), Validators.pattern(this.vf.formRules.passwordPattern)]),
+      confirmPassword: new FormControl(''),
+      role: new FormControl('', Validators.required),
+      accept: new FormControl(false, Validators.requiredTrue)
+    }, { validators: confirmPasswordValidator });
 
-        validators: [matchingPasswords]
 
-      }
-    );
     this.id = this.activatetRoute.snapshot.params.id;
     this.usersService.getuser(this.id).subscribe((response: any) => {
       this.userForm.patchValue(response)
@@ -41,22 +52,39 @@ export class UpdateUserComponent implements OnInit {
       }
     );
   }
+  get f() { return this.userForm.controls; }
 
   updateuser() {
 
-    console.log(!this.userForm?.value.repassword);
     this.submitted = true;
-    if (this.userForm.invalid || !this.userForm?.value.repassword==true) {
+    if (this.userForm.invalid) {
       return
     }
-      //with services
-      this.usersService.updateuser(this.id, this.userForm.value).subscribe((response) => {
-        this.router.navigate(['users'])
-      },
-        (error) => {
-          console.log(error);
-        }
-        );
+    //with services
+    this.usersService.updateuser(this.id, this.userForm.value).subscribe((response) => {
+      this.router.navigate(['users'])
+    },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+  }
+
+
+  onReset() {
+
+    this.submitted = false;
+    this.userForm.reset();
+
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.userForm.invalid) {
+      return;
+    }
 
   }
 }

@@ -58,4 +58,8 @@ export class OwnerService {
   addowner(body: any) {
     return this.httpClient.post(`${this.baseUrl}/addowner`, body)
   }
+  affectService(body:any){
+    return this.httpClient.put(`${this.baseUrl}/affectService/${body.service}/${body._id}`,body)
+
+  }
 }

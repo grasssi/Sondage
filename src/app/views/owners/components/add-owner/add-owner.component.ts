@@ -49,22 +49,32 @@ allservices(){
     }
   );
 }
+
+affectService(body:any){
+  this.ownerservice.affectService(body).subscribe((response: any) => {},
+          (error: any) => {
+            this.toasterService.pop('error', 'Error', error.error.message);
+            console.log(error);
+          }
+        );
+}
   addowner() {
     this.submitted = true;
        if (this.ownerForm.invalid) {
       return
     };
-
     //with Services
     this.ownerservice.addowner(this.ownerForm.value).subscribe((response: any) => {
       this.toasterService.pop('success', 'Success Login', response.message);
       this.router.navigate(['/owners']);
     },
-      (error: any) => {
-        this.toasterService.pop('error', 'Error', error.error.message);
-        console.log(error);
-      }
+    (error: any) => {
+      this.toasterService.pop('error', 'Error', error.error.message);
+      console.log(error);
+    }
     );
+    console.log(this.ownerForm.value._id);
+    this.affectService(this.ownerForm.value)
   }
 
 

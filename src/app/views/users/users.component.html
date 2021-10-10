@@ -1,1 +1,7 @@
-<p>users works!</p>
+<div class="position : relative col-2" >
+  <button type="button" class="btn btn-block btn-success" (click)="logout()">logout</button>
+</div>
+<div class=" position : top-right relative col-2 ">
+  <button type="button" class="btn btn-pill btn-block btn-primary" [routerLink]="['adduser']">Add</button>
+</div>
+<app-list-users></app-list-users>

@@ -29,12 +29,13 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { ToasterModule, ToasterService } from 'angular2-toaster';
-import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ResetpasswordComponent } from './reset/resetpassword.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { TokenInterceptor } from './services/token.interceptor';
 import { ValidatorsModule } from "ngx-validators";
+import { SharedModule } from './views/shared/shared.module';
 @NgModule({
   imports: [
     BrowserModule,
@@ -54,8 +55,7 @@ import { ValidatorsModule } from "ngx-validators";
     ReactiveFormsModule,
     FormsModule,
     ValidatorsModule,
-
-
+    SharedModule
   ],
   declarations: [
     AppComponent,

@@ -11,7 +11,7 @@ import { AuthserviceService } from '../services/authservice.service';
 })
 export class ResetpasswordComponent implements OnInit {
   submitted = false;
-  profileForm = new FormGroup({
+  resetForm = new FormGroup({
     email: new FormControl('', Validators.required),
     password: new FormControl(''),
 
@@ -22,15 +22,15 @@ export class ResetpasswordComponent implements OnInit {
   }
   resetpassword() {
     this.submitted = true
-    if (this.profileForm.invalid) {
+    if (this.resetForm.invalid) {
       return
     } else {
-      this.authservice.resetpassword(this.profileForm.value).subscribe((response: any) => {
+      this.authservice.resetpassword(this.resetForm.value).subscribe((response: any) => {
         this.toasterService.pop('success', 'Success Login', response.message);
         this.router.navigate(['/login']);
       },
         (error: any) => {
-          this.toasterService.pop('error', 'Error', error.error.message);
+          this.toasterService.pop('error', 'Error', error.error.error);
           console.log(error);
         }
       );

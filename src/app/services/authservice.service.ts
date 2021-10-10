@@ -14,10 +14,10 @@ export class AuthserviceService {
   register(body: any) {
     return this.httpClient.post(`${this.baseUrl}/register`, body)
   }
-  resetpassword(body: any) {
-       return this.httpClient.post(`${this.baseUrl}/forgotpassword`, body)
-  }
   changepassword(body: any) {
+       return this.httpClient.post(`${this.baseUrl}/changepassword`, body)
+  }
+  resetpassword(body: any) {
     return this.httpClient.put(`${this.baseUrl}/resetpassword`, body)
   }
 }

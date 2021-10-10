@@ -1,64 +1,123 @@
-<div class="app-body">
-  <main class="main d-flex align-items-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 mx-auto">
-          <div class="card mx-4">
-            <div class="card-body p-4">
-              <form [formGroup]="profileForm">
-                <h1>Register</h1>
-                <p class="text-muted">Create your account</p>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="icon-user"></i></span>
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="icon-note"></i> Form Validation
+          <a class="badge badge-danger" href="https://coreui.io/pro/">CoreUI Pro Component</a>
+          <div class="card-header-actions">
+            <a class="card-header-action" href="https://angular.io/guide/form-validation" target="_blank">
+              <small class="text-muted">docs</small>
+            </a>
+          </div>
+        </div>
+        <div class="card-body">Angular Form Validation
+          <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <h6>Simple Form</h6>
+              <form [formGroup]="registerForm" novalidate (ngSubmit)="onSubmit()" class="needs-validation">
+                <div class="form-group">
+                  <label class="col-form-label" for="firstName">First name</label>
+                  <input class="form-control" id="firstName" type="text" formControlName="firstName"
+                    placeholder="First name" autocomplete="given-name" required autofocus
+                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors, 'is-valid': f.firstName.touched && !f.firstName.errors }" />
+                  <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+                    <div *ngIf="f['firstName'].errors.required">First Name is required</div>
                   </div>
-                  <input type="text" class="form-control" placeholder="firstName" autocomplete="firstName"
-                    formControlName="firstName" required  [ngClass]="{'is-valid': submitted && !profileForm.controls.firstName.errors ,'is-invalid': submitted && profileForm.controls.firstName.errors}">
                 </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="icon-user"></i></span>
+                <div class="form-group">
+                  <label class="col-form-label" for="lastName">Last name</label>
+                  <input class="form-control" id="lastName" type="text" formControlName="lastName"
+                    placeholder="Last name" autocomplete="family-name" required
+                    [ngClass]="{ 'is-invalid': submitted && f.lastName.errors, 'is-valid': f.lastName.touched && !f.lastName.errors }" />
+                  <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+                    <div *ngIf="f['lastName'].errors.required">Last Name is required</div>
                   </div>
-                  <input type="text" class="form-control" placeholder="LastName" autocomplete="LastName"
-                    formControlName="lastName" required  [ngClass]="{'is-valid': submitted && !profileForm.controls.lastName.errors ,'is-invalid': submitted && profileForm.controls.lastName.errors}">
                 </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">@</span>
+                <div class="form-group">
+                  <label class="col-form-label" for="email">Email</label>
+                  <input class="form-control" id="email" type="text" formControlName="email" placeholder="Email"
+                    autocomplete="email" required
+                    [ngClass]="{ 'is-invalid': submitted && f.email.errors, 'is-valid': f.email.touched && !f.email.errors }" />
+                  <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                    <div *ngIf="f['email'].errors.required">Email is required</div>
+                    <div *ngIf="f['email'].errors.email">{{formErrors.email.email}}</div>
                   </div>
-                  <input type="text" class="form-control" placeholder="Email" autocomplete="email"
-                    formControlName="email" required  [ngClass]="{'is-valid': submitted && !profileForm.controls.email.errors ,'is-invalid': submitted && profileForm.controls.email.errors}">
                 </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="icon-lock"></i></span>
+
+                <div class="form-group">
+                  <label class="col-form-label" for="role">Role</label>
+                  <select ng-model="selectedItem" class="form-control" placeholder="role" autocomplete="role"
+                    formControlName="role" required
+                    [ngClass]="{ 'is-invalid': submitted && f.role.errors, 'is-valid': f.role.touched && !f.role.errors }">
+                    <option value=""></option>
+                    <option value="admin">admin</option>
+                    <option value="user">user</option>
+                  </select>
+                  <div *ngIf="submitted && f['role'].errors" class="invalid-feedback">
+                    <div *ngIf="f['role'].errors.required">Role is required</div>
                   </div>
-                  <input type="password" class="form-control" placeholder="Password" autocomplete="new-password"
-                    formControlName="password" required  [ngClass]="{'is-valid': submitted && !profileForm.controls.password.errors ,'is-invalid': submitted && profileForm.controls.password.errors}">
                 </div>
-                <div class="input-group mb-4">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="icon-lock"></i></span>
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <label class="col-form-label" for="password">Password</label>
+                    <input class="form-control" id="password" type="password" formControlName="password"
+                      placeholder="Password" autocomplete="new-password" required
+                      [ngClass]="{ 'is-invalid': submitted && f.password.errors, 'is-valid': f.password.touched && !f.password.errors }" />
+                    <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                      <div *ngIf="f['password'].errors.required">Password is required</div>
+                      <div *ngIf="f['password'].errors.minlength">{{formErrors.password.minLength}}</div>
+                      <div *ngIf="f['password'].errors.pattern">{{formErrors.password.pattern}}</div>
+                    </div>
                   </div>
-                  <input type="password" class="form-control" placeholder="Repeat password" autocomplete="new-password"
-                    required formControlName="repassword" [ngClass]="{'is-valid': submitted && !profileForm.controls.repassword.errors ,'is-invalid': submitted && profileForm.controls.repassword.errors}">
+                  <div class="form-group col-md-6">
+                    <label class="col-form-label" for="confirmPassword">Confirm password</label>
+                    <input class="form-control" id="confirmPassword" type="password" formControlName="confirmPassword"
+                      placeholder="Confirm password" autocomplete="new-password" required
+                      [ngClass]="{ 'is-invalid': submitted && registerForm.errors, 'is-valid': f.confirmPassword.touched && !registerForm.errors }" />
+                    <div *ngIf="submitted && registerForm.errors" class="invalid-feedback">
+                      <div *ngIf="registerForm.errors['passwordMismatch']">
+                        {{formErrors.confirmPassword.passwordMismatch}}
+                      </div>
+                    </div>
                   </div>
-                <button type="button" class="btn btn-block btn-success" (click)="register()">Create Account</button>
+                </div>
+                <div class="form-group">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="accept" formControlName="accept" required
+                      [ngClass]="{ 'is-invalid': submitted && f.accept.errors, 'is-valid': !f.accept.errors }" />
+                    <label class="custom-control-label" for="accept">I accept the terms of use</label>
+                    <div *ngIf="submitted && f['accept'].errors" class="invalid-feedback">
+                      <div *ngIf="f['accept'].errors.required">You have to accept our Terms and Conditions</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary mr-1" (click)="register()"
+                    [disabled]="registerForm.pristine || registerForm.invalid">Submit</button>
+                  <button class="btn btn-success mr-1" type="submit" [disabled]="registerForm.valid">Validate</button>
+                  <button class="btn btn-danger" type="reset" [disabled]="registerForm.pristine && !submitted"
+                    (click)="onReset()">Reset</button>
+                </div>
               </form>
             </div>
-            <!-- <div class="card-footer p-4">
-              <div class="row">
-                <div class="col-6">
-                  <button class="btn btn-block btn-facebook" type="button"><span>facebook</span></button>
-                </div>
-                <div class="col-6">
-                  <button class="btn btn-block btn-twitter" type="button"><span>twitter</span></button>
+            <div class="col-md-6">
+              <div class="card bg-secondary" [ngClass]="{ 'bg-info' : registerForm.valid }">
+                <div class="card-body">
+                  <pre>Value: <code>{{ registerForm.value | json }}</code></pre>
+                  <p>
+                    Status: {{ registerForm.status }}
+                  </p>
+                  <p>
+                    Errors: {{ registerForm.errors | json }}
+                  </p>
                 </div>
               </div>
-            </div> -->
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </main>
+  </div>
 </div>

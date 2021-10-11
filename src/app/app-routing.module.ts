@@ -109,6 +109,10 @@ export const routes: Routes = [
         path: 'owners',
         loadChildren: () => import('./views/owners/owners.module').then(m => m.OwnersModule)
       },
+      {
+        path: 'services',
+        loadChildren: () => import('./views/services/services.module').then(m => m.ServicesModule)
+      },
     ]
   },
   { path: '**', component: P404Component }

@@ -6,66 +6,69 @@ import { ServiceService } from '../../../../services/service.service';
 import { ValidationService } from '../../../../validators/validation.service';
 
 @Component({
-  selector: 'app-update-owner',
-  templateUrl: './update-owner.component.html',
-  styleUrls: ['./update-owner.component.css']
+  selector: 'app-update-services',
+  templateUrl: './update-services.component.html',
+  styleUrls: ['./update-services.component.css']
 })
-export class UpdateOwnerComponent implements OnInit {
-
+export class UpdateServicesComponent implements OnInit {
   submitted = false;
-  id: any
-  formErrors: any;
+  id: any;
   myRes:any;
-  ownerForm: FormGroup = new FormGroup({});;
+  formErrors: any;
+  serviceForm: FormGroup = new FormGroup({});;
   constructor(private activatetRoute: ActivatedRoute,
     private router: Router,
-    private serviceservice:ServiceService,
-    private ownerService: OwnerService,
+    private service: ServiceService,
+    private ownerService:OwnerService,
     public vf: ValidationService) {
     this.formErrors = this.vf.errorMessages;
   }
 
   ngOnInit(): void {
-    this.ownerForm = new FormGroup({
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      service: new FormControl('', Validators.required),
+    this.serviceForm = new FormGroup({
+      nomService: new FormControl('', [Validators.required]),
+      owner: new FormControl('', [Validators.required]),
+
       accept: new FormControl(false, Validators.requiredTrue)
     });
 
+
     this.id = this.activatetRoute.snapshot.params.id;
-    this.ownerService.getowner(this.id).subscribe((response: any) => {
-      this.ownerForm.patchValue(response)
+    this.service.getservice(this.id).subscribe((response: any) => {
+      this.serviceForm.patchValue(response)
     },
       (error) => {
         console.log(error);
       }
     );
-    this.allservices()
+    this.owners();
   }
-  get f() { return this.ownerForm.controls; }
+  get f() { return this.serviceForm.controls; }
 
-  // get all services
-  allservices(){
-    this.serviceservice.allServices().subscribe((response: any) => {
+  owners(){
+    this.ownerService.owners().subscribe((response: any) => {
       this.myRes=response
-
     },
       (error: any) => {
         console.log(error);
       }
     );
   }
-  updateOwner() {
+
+
+  updateservice() {
 
     this.submitted = true;
-    if (this.ownerForm.invalid) {
+    if (this.serviceForm.invalid) {
       return
     }
     //with services
-    this.ownerService.updateowner(this.id, this.ownerForm.value).subscribe((response) => {
-      this.router.navigate(['owners'])
+    this.service.updateservice(this.id, this.serviceForm.value).subscribe((response) => {
+      console.log(this.id);
+      console.log(this.serviceForm.value.owner);
+
+       this.service.affectService(this.id,this.serviceForm.value).subscribe()
+      this.router.navigate(['services'])
     },
       (error) => {
         console.log(error);
@@ -78,14 +81,14 @@ export class UpdateOwnerComponent implements OnInit {
   onReset() {
 
     this.submitted = false;
-    this.ownerForm.reset();
+    this.serviceForm.reset();
 
   }
 
   onSubmit() {
     this.submitted = true;
     // stop here if form is invalid
-    if (this.ownerForm.invalid) {
+    if (this.serviceForm.invalid) {
       return;
     }
 

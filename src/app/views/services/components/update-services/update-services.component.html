@@ -1,0 +1,79 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="icon-note"></i> Form Validation
+          <a class="badge badge-danger" href="https://coreui.io/pro/">CoreUI Pro Component</a>
+          <div class="card-header-actions">
+            <a class="card-header-action" href="https://angular.io/guide/form-validation" target="_blank">
+              <small class="text-muted">docs</small>
+            </a>
+          </div>
+        </div>
+        <div class="card-body">Angular Form Validation
+          <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <h6>Simple Form</h6>
+              <form [formGroup]="serviceForm" novalidate (ngSubmit)="onSubmit()" class="needs-validation">
+                <div class="form-group">
+                  <label class="col-form-label" for="Service">Service</label>
+                  <input class="form-control" id="Service" type="text" formControlName="nomService"
+                    placeholder="First name" autocomplete="given-name" required autofocus
+                    [ngClass]="{ 'is-invalid': submitted && f.nomService.errors, 'is-valid': f.nomService.touched && !f.nomService.errors }" />
+                  <div *ngIf="submitted && f['nomService'].errors" class="invalid-feedback">
+                    <div *ngIf="f['nomService'].errors.required">Service is required</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label " for="service">Owners</label>
+                  <select ng-model="selectedItem" class="form-control" data-live-search="true" multiple
+                    placeholder="owner" autocomplete="owner" formControlName="owner" required
+                    [ngClass]="{ 'is-invalid': submitted && f.owner.errors, 'is-valid': f.owner.touched && !f.owner.errors }">
+                    <option *ngFor="let owner of myRes" value="{{owner._id}}">{{owner.firstName}} {{owner.lastName}}
+                    </option>
+                  </select>
+
+                  <div *ngIf="submitted && f['owner'].errors" class="invalid-feedback">
+                    <div *ngIf="f['owner'].errors.required">owner is required</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="accept" formControlName="accept" required
+                      [ngClass]="{ 'is-invalid': submitted && f.accept.errors, 'is-valid': !f.accept.errors }" />
+                    <label class="custom-control-label" for="accept">I accept the terms of use</label>
+                    <div *ngIf="submitted && f['accept'].errors" class="invalid-feedback">
+                      <div *ngIf="f['accept'].errors.required">You have to accept our Terms and Conditions</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary mr-1" (click)="updateservice()"
+                    [disabled]="serviceForm.pristine || serviceForm.invalid">Submit</button>
+                  <button class="btn btn-success mr-1" type="submit" [disabled]="serviceForm.valid">Validate</button>
+                  <button class="btn btn-danger" type="reset" [disabled]="serviceForm.pristine && !submitted"
+                    (click)="onReset()">Reset</button>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-6">
+              <div class="card bg-secondary" [ngClass]="{ 'bg-info' : serviceForm.valid }">
+                <div class="card-body">
+                  <pre>Value: <code>{{ serviceForm.value | json }}</code></pre>
+                  <p>
+                    Status: {{ serviceForm.status }}
+                  </p>
+                  <p>
+                    Errors: {{ serviceForm.errors | json }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

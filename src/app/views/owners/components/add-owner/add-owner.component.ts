@@ -41,7 +41,6 @@ allservices(){
   this.serviceservice.allServices().subscribe((response: any) => {
     this.myRes=response
     this.toasterService.pop('success', 'Success Login', response.message);
-
   },
     (error: any) => {
       this.toasterService.pop('error', 'Error', error.error.message);
@@ -66,6 +65,7 @@ affectService(body:any){
     //with Services
     this.ownerservice.addowner(this.ownerForm.value).subscribe((response: any) => {
       this.toasterService.pop('success', 'Success Login', response.message);
+     // this.affectService(this.ownerForm.value)
       this.router.navigate(['/owners']);
     },
     (error: any) => {
@@ -73,8 +73,6 @@ affectService(body:any){
       console.log(error);
     }
     );
-    console.log(this.ownerForm.value._id);
-    this.affectService(this.ownerForm.value)
   }
 
 

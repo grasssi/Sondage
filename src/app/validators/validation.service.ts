@@ -22,7 +22,9 @@ export class ValidationService {
     confirmPassword: '',
     role: '',
     accept: false,
-    service: ''
+    service: '',
+    nomService:'',
+    owner:''
   };
 
   constructor() {
@@ -57,7 +59,13 @@ export class ValidationService {
         requiredTrue: 'You have to accept our Terms and Conditions'
       },
       service: {
-        required: 'Role confirmation is required',
+        required: 'service confirmation is required',
+      },
+      nomService: {
+        required: 'nomService confirmation is required',
+      },
+      owner: {
+        required: 'nomService confirmation is required',
       },
     };
   }

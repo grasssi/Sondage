@@ -41,7 +41,6 @@ allservices(){
   this.serviceservice.allServices().subscribe((response: any) => {
     this.myRes=response
     this.toasterService.pop('success', 'Success Login', response.message);
-
   },
     (error: any) => {
       this.toasterService.pop('error', 'Error', error.error.message);

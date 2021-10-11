@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
-import { catchError,retry } from 'rxjs/operators';
+import { catchError, retry } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 export interface OwnerData {
@@ -58,8 +58,7 @@ export class OwnerService {
   addowner(body: any) {
     return this.httpClient.post(`${this.baseUrl}/addowner`, body)
   }
-  affectService(body:any){
-    return this.httpClient.put(`${this.baseUrl}/affectService/${body.service}/${body._id}`,body)
-
+  affectService(body: any) {
+    return this.httpClient.put(`${this.baseUrl}/affectService/${body.service}/${body._id}`, body)
   }
 }

@@ -66,6 +66,7 @@ affectService(body:any){
     //with Services
     this.ownerservice.addowner(this.ownerForm.value).subscribe((response: any) => {
       this.toasterService.pop('success', 'Success Login', response.message);
+     // this.affectService(this.ownerForm.value)
       this.router.navigate(['/owners']);
     },
     (error: any) => {
@@ -73,8 +74,6 @@ affectService(body:any){
       console.log(error);
     }
     );
-    console.log(this.ownerForm.value._id);
-    this.affectService(this.ownerForm.value)
   }
 
 

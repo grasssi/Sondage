@@ -14,12 +14,12 @@ import { ValidationFormsService } from '../../../forms/validation-forms/validati
 export class AddOwnerComponent implements OnInit {
   submitted = false;
   formErrors: any;
-  myRes:any;
+  myRes: any;
   ownerForm = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
-    //service: new FormControl(''),
+    service: new FormControl(''),
     accept: new FormControl(false, Validators.requiredTrue)
   });
 
@@ -28,7 +28,7 @@ export class AddOwnerComponent implements OnInit {
   constructor(private toasterService: ToasterService,
     private router: Router,
     private ownerservice: OwnerService,
-    private serviceservice:ServiceService,
+    private serviceservice: ServiceService,
     public vf: ValidationFormsService) {
     this.formErrors = this.vf.errorMessages;
   }
@@ -37,41 +37,41 @@ export class AddOwnerComponent implements OnInit {
   }
 
   get f() { return this.ownerForm.controls; }
-allservices(){
-  this.serviceservice.allServices().subscribe((response: any) => {
-    this.myRes=response
-    this.toasterService.pop('success', 'Success Login', response.message);
-  },
-    (error: any) => {
-      this.toasterService.pop('error', 'Error', error.error.message);
-      console.log(error);
-    }
-  );
-}
+  allservices() {
+    this.serviceservice.allServices().subscribe((response: any) => {
+      this.myRes = response
+      this.toasterService.pop('success', 'Success Login', response.message);
+    },
+      (error: any) => {
+        this.toasterService.pop('error', 'Error', error.error.message);
+        console.log(error);
+      }
+    );
+  }
 
-affectService(body:any){
-  this.ownerservice.affectService(body).subscribe((response: any) => {},
-          (error: any) => {
-            this.toasterService.pop('error', 'Error', error.error.message);
-            console.log(error);
-          }
-        );
-}
+  affectService(body: any) {
+    this.ownerservice.affectService(body).subscribe((response: any) => { },
+      (error: any) => {
+        this.toasterService.pop('error', 'Error', error.error.message);
+        console.log(error);
+      }
+    );
+  }
   addowner() {
     this.submitted = true;
-       if (this.ownerForm.invalid) {
+    if (this.ownerForm.invalid) {
       return
     };
     //with Services
-    const add=this.ownerservice.addowner(this.ownerForm.value).subscribe((response: any) => {
+    const addowner = this.ownerservice.addowner(this.ownerForm.value).subscribe((response: any) => {
       this.toasterService.pop('success', 'Success Login', response.message);
-     // this.affectService(this.ownerForm.value)
+      // this.affectService(this.ownerForm.value)
       this.router.navigate(['/owners']);
     },
-    (error: any) => {
-      this.toasterService.pop('error', 'Error', error.error.message);
-      console.log(error);
-    }
+      (error: any) => {
+        this.toasterService.pop('error', 'Error', error.error.message);
+        console.log(error);
+      }
     );
   }
 

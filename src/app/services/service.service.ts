@@ -40,6 +40,6 @@ export class ServiceService {
     return this.httpClient.put(`${this.baseUrl}/updateservice/${id}`, body)
   }
   affectService(id:any,body: any) {
-    return this.httpClient.put(`${this.baseUrl}/affectService/${id}/${body.owner}`, body)
+    return this.httpClient.put(`${this.baseUrl}/affectService/${id}`, body)
   }
 }

@@ -13,13 +13,13 @@ import { ValidationService } from '../../../../validators/validation.service';
 export class UpdateServicesComponent implements OnInit {
   submitted = false;
   id: any;
-  myRes:any;
+  myRes: any;
   formErrors: any;
   serviceForm: FormGroup = new FormGroup({});;
   constructor(private activatetRoute: ActivatedRoute,
     private router: Router,
     private service: ServiceService,
-    private ownerService:OwnerService,
+    private ownerService: OwnerService,
     public vf: ValidationService) {
     this.formErrors = this.vf.errorMessages;
   }
@@ -45,9 +45,9 @@ export class UpdateServicesComponent implements OnInit {
   }
   get f() { return this.serviceForm.controls; }
 
-  owners(){
+  owners() {
     this.ownerService.owners().subscribe((response: any) => {
-      this.myRes=response
+      this.myRes = response
     },
       (error: any) => {
         console.log(error);
@@ -64,10 +64,7 @@ export class UpdateServicesComponent implements OnInit {
     }
     //with services
     this.service.updateservice(this.id, this.serviceForm.value).subscribe((response) => {
-      console.log(this.id);
-      console.log(this.serviceForm.value.owner);
-
-       this.service.affectService(this.id,this.serviceForm.value).subscribe()
+      this.service.affectService(this.id, this.serviceForm.value).subscribe()
       this.router.navigate(['services'])
     },
       (error) => {

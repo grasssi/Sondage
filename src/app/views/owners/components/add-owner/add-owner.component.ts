@@ -19,7 +19,7 @@ export class AddOwnerComponent implements OnInit {
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
-    service: new FormControl('', Validators.required),
+    //service: new FormControl(''),
     accept: new FormControl(false, Validators.requiredTrue)
   });
 
@@ -63,7 +63,7 @@ affectService(body:any){
       return
     };
     //with Services
-    this.ownerservice.addowner(this.ownerForm.value).subscribe((response: any) => {
+    const add=this.ownerservice.addowner(this.ownerForm.value).subscribe((response: any) => {
       this.toasterService.pop('success', 'Success Login', response.message);
      // this.affectService(this.ownerForm.value)
       this.router.navigate(['/owners']);

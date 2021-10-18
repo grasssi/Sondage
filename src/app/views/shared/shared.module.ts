@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+//Shared Module
 import { DataFilterPipe } from '../tables/datatable/datafilterpipe';
 import { DataTableModule } from 'angular2-datatable';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-//Shared Module
 import { SharedRoutingModule } from './shared-routing.module';
+import { SelectModule } from 'ng-select';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { SharedRoutingModule } from './shared-routing.module';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    SelectModule
 
   ],
   exports:[
@@ -27,7 +29,8 @@ import { SharedRoutingModule } from './shared-routing.module';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    DataFilterPipe
+    DataFilterPipe,
+    SelectModule
   ]
 })
 export class SharedModule { }

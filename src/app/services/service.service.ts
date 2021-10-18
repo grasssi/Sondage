@@ -42,4 +42,8 @@ export class ServiceService {
   affectService(id:any,body: any) {
     return this.httpClient.put(`${this.baseUrl}/affectService/${id}`, body)
   }
+
+  addservice(body:any){
+    return this.httpClient.post(`${this.baseUrl}/addservice/`, body)
+  }
 }

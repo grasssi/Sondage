@@ -113,6 +113,9 @@ export const routes: Routes = [
         path: 'services',
         loadChildren: () => import('./views/services/services.module').then(m => m.ServicesModule)
       },
+      {
+        path: 'informatiques',
+         loadChildren: () => import('./views/informatiques/informatiques.module').then(m => m.InformatiquesModule) },
     ]
   },
   { path: '**', component: P404Component }

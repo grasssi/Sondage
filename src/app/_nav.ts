@@ -58,10 +58,20 @@ export const navItems: NavData[] = [
     name: 'Components'
   },
   {
-    name: 'Base',
-    url: '/base',
+    name: 'Informatiques',
+    url: '/informatiques',
     icon: 'icon-puzzle',
     children: [
+      {
+        name: 'List',
+        url: '/informatiques/listmateriels',
+        icon: 'icon-puzzle'
+      },
+      {
+        name: 'Add',
+        url: '/informatiques/Addmateriel',
+        icon: 'icon-puzzle'
+      },
       {
         name: 'Cards',
         url: '/base/cards',

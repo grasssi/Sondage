@@ -1,0 +1,98 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="icon-note"></i> Form Validation
+          <a class="badge badge-danger" href="https://coreui.io/pro/">CoreUI Pro Component</a>
+          <div class="card-header-actions">
+            <a class="card-header-action" href="https://angular.io/guide/form-validation" target="_blank">
+              <small class="text-muted">docs</small>
+            </a>
+          </div>
+        </div>
+        <div class="card-body">Angular Form Validation
+          <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <h6>Simple Form</h6>
+              <form [formGroup]="matForm" novalidate (ngSubmit)="onSubmit()" class="needs-validation">
+                <div class="form-group">
+                  <label class="col-form-label" for="Nom">إسم العتاد</label>
+                  <input class="form-control" id="Nom" type="text" formControlName="Nom"
+                    placeholder="إسم العتاد" autocomplete="given-name" required autofocus
+                    [ngClass]="{ 'is-invalid': submitted && f.Nom.errors, 'is-valid': f.Nom.touched && !f.Nom.errors }" />
+                  <div *ngIf="submitted && f['Nom'].errors" class="invalid-feedback">
+                    <div *ngIf="f['Nom'].errors.required">First Name is required</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label" for="type">نوع العتاد</label>
+                  <input class="form-control" id="type" type="text" formControlName="type"
+                    placeholder="نوع العتاد" autocomplete="family-name" required
+                    [ngClass]="{ 'is-invalid': submitted && f.type.errors, 'is-valid': f.type.touched && !f.type.errors }" />
+                  <div *ngIf="submitted && f['type'].errors" class="invalid-feedback">
+                    <div *ngIf="f['type'].errors.required">Last Name is required</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label" for="Marque">Marque</label>
+                  <input class="form-control" id="Marque" type="text" formControlName="Marque" placeholder="Marque"
+                    autocomplete="Marque" required
+                    [ngClass]="{ 'is-invalid': submitted && f.Marque.errors, 'is-valid': f.Marque.touched && !f.Marque.errors }" />
+                  <div *ngIf="submitted && f['Marque'].errors" class="invalid-feedback">
+                    <div *ngIf="f['Marque'].errors.required">Marque is required</div>
+                    <div *ngIf="f['Marque'].errors.Marque">{{formErrors.Marque.Marque}}</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label" for="service">المصلحة</label>
+                  <select ng-model="selectedItem" class="form-control" placeholder="service" autocomplete="service"
+                    formControlName="service" required
+                    [ngClass]="{ 'is-invalid': submitted && f.service.errors, 'is-valid': f.service.touched && !f.service.errors }">
+                    <option *ngFor="let user of myRes" value="{{user._id}}">{{user.nomService}}</option>
+                  </select>
+
+                  <div *ngIf="submitted && f['service'].errors" class="invalid-feedback">
+                    <div *ngIf="f['service'].errors.required">service is required</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="accept" formControlName="accept" required
+                      [ngClass]="{ 'is-invalid': submitted && f.accept.errors, 'is-valid': !f.accept.errors }" />
+                    <label class="custom-control-label" for="accept">I accept the terms of use</label>
+                    <div *ngIf="submitted && f['accept'].errors" class="invalid-feedback">
+                      <div *ngIf="f['accept'].errors.required">You have to accept our Terms and Conditions</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary mr-1" (click)="addowner()"
+                    [disabled]="matForm.pristine || matForm.invalid">Submit</button>
+                  <button class="btn btn-success mr-1" type="submit" [disabled]="matForm.valid">Validate</button>
+                  <button class="btn btn-danger" type="reset" [disabled]="matForm.pristine && !submitted"
+                    (click)="onReset()">Reset</button>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-6">
+              <div class="card bg-secondary" [ngClass]="{ 'bg-info' : matForm.valid }">
+                <div class="card-body">
+                  <pre>Value: <code>{{ matForm.value | json }}</code></pre>
+                  <p>
+                    Status: {{ matForm.status }}
+                  </p>
+                  <p>
+                    Errors: {{ matForm.errors | json }}
+
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

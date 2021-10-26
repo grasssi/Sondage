@@ -44,6 +44,23 @@ export const navItems: NavData[] = [
     name: 'Theme'
   },
   {
+    name: 'Informatiques',
+    url: '/informatiques',
+    icon: 'icon-puzzle',
+    children: [
+      {
+        name: 'List',
+        url: '/informatiques/listmateriels',
+        icon: 'icon-puzzle'
+      },
+      {
+        name: 'Add',
+        url: '/informatiques/addmateriel',
+        icon: 'icon-puzzle'
+      },
+    ]
+  },
+  {
     name: 'Colors',
     url: '/theme/colors',
     icon: 'icon-drop'
@@ -58,20 +75,11 @@ export const navItems: NavData[] = [
     name: 'Components'
   },
   {
-    name: 'Informatiques',
-    url: '/informatiques',
+    name: 'base',
+    url: '/bases',
     icon: 'icon-puzzle',
     children: [
-      {
-        name: 'List',
-        url: '/informatiques/listmateriels',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'Add',
-        url: '/informatiques/Addmateriel',
-        icon: 'icon-puzzle'
-      },
+      
       {
         name: 'Cards',
         url: '/base/cards',

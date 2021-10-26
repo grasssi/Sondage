@@ -24,7 +24,8 @@ export class ValidationService {
     accept: false,
     service: '',
     nomService:'',
-    owner:''
+    owner:'',
+    SerialNumber:''
   };
 
   constructor() {
@@ -65,8 +66,11 @@ export class ValidationService {
         required: 'nomService confirmation is required',
       },
       owner: {
-        required: 'nomService confirmation is required',
+        required: 'owner  is required',
       },
+      SerialNumber:{
+        required:'SerialNumber is required '
+      }
     };
   }
 }

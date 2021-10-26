@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToasterService } from 'angular2-toaster';
+import { MarquesService } from '../../../../services/marques.service';
 import { ServiceService } from '../../../../services/service.service';
+import { TypesService } from '../../../../services/types.service';
 import { ValidationFormsService } from '../../../forms/validation-forms/validation-forms.service';
 
 @Component({
@@ -15,28 +17,35 @@ export class AddMaterielComponent implements OnInit {
   submitted = false;
   formErrors: any;
   myRes: any;
+  myTypes: any;
+  myMarques: any;
   matForm = new FormGroup({
     Nom: new FormControl(''),
     type: new FormControl(''),
     Marque: new FormControl(''),
     service: new FormControl(''),
+    SerialNumber: new FormControl(''),
     accept: new FormControl(false, Validators.requiredTrue)
   });
-
-
 
   constructor(private toasterService: ToasterService,
     private router: Router,
     // private ownerservice: OwnerService,
     private serviceservice: ServiceService,
+    private typeservice: TypesService,
+    private marqueservice: MarquesService,
     public vf: ValidationFormsService) {
     this.formErrors = this.vf.errorMessages;
   }
   ngOnInit(): void {
-    this.allservices()
+    this.allservices();
+    this.alltypes();
+    this.allmarques()
   }
 
   get f() { return this.matForm.controls; }
+
+  //get all services
   allservices() {
     this.serviceservice.allServices().subscribe((response: any) => {
       this.myRes = response
@@ -48,14 +57,40 @@ export class AddMaterielComponent implements OnInit {
       }
     );
   }
+  //get all types
+  alltypes() {
+    this.typeservice.alltypes().subscribe((response: any) => {
+      this.myTypes = response
+      this.toasterService.pop('success', 'Success Login', response.message);
+    },
+      (error: any) => {
+        this.toasterService.pop('error', 'Error', error.error.message);
+        console.log(error);
+      }
+    );
+  }
+
+  //get all marques
+  allmarques() {
+    this.marqueservice.allmarques().subscribe((response: any) => {
+      this.myMarques = response
+      this.toasterService.pop('success', 'Success Login', response.message);
+    },
+      (error: any) => {
+        this.toasterService.pop('error', 'Error', error.error.message);
+        console.log(error);
+      }
+    );
+  }
+
 
   affectService(body: any) {
-  //   this.ownerservice.affectService(body).subscribe((response: any) => { },
-  //     (error: any) => {
-  //       this.toasterService.pop('error', 'Error', error.error.message);
-  //       console.log(error);
-  //     }
-  //   );
+    //   this.ownerservice.affectService(body).subscribe((response: any) => { },
+    //     (error: any) => {
+    //       this.toasterService.pop('error', 'Error', error.error.message);
+    //       console.log(error);
+    //     }
+    //   );
   }
   addowner() {
     // this.submitted = true;
@@ -74,7 +109,6 @@ export class AddMaterielComponent implements OnInit {
     //   }
     // );
   }
-
 
   onReset() {
 

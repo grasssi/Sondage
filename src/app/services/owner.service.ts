@@ -21,7 +21,7 @@ export class OwnerService {
 
   constructor(private httpClient: HttpClient) { }
 
-  owners() {
+  allowners() {
     return this.httpClient.get<TableData>(`${this.baseUrl}/allowners`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError)

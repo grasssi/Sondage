@@ -14,7 +14,7 @@ export class ListOwnersComponent implements OnInit {
   constructor(private ownerService: OwnerService) {}
 
   ngOnInit(): void {
-    this.ownerService.owners().subscribe(
+    this.ownerService.allowners().subscribe(
         (data: TableData) => {
           setTimeout(() => {
             this.data = [...data];

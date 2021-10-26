@@ -45,4 +45,7 @@ export class MarquesService {
     return this.httpClient.put(`${this.baseUrl}/updatemarque/${id}`, body)
 
   }
+  affectType(body: any) {
+    return this.httpClient.put(`${this.baseUrl}/affecttype/${body.marque}/${body._id}`, body)
+  }
 }

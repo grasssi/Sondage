@@ -42,7 +42,7 @@ export class AddServicesComponent implements OnInit {
 
   get f() { return this.serviceForm.controls; }
   allowners() {
-    this.ownerservice.owners().subscribe((response: any) => {
+    this.ownerservice.allowners().subscribe((response: any) => {
       this.myRes = response
       this.toasterService.pop('success', 'Success Login', response.message);
     },

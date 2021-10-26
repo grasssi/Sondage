@@ -18,6 +18,13 @@ export class MarquesService {
       catchError(this.handleError)
     )
   }
+
+  findMarques(body:any){
+    return this.httpClient.get<TableData>(`${this.baseUrl}/findmarques`,body).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError)
+    )
+  }
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -44,5 +51,8 @@ export class MarquesService {
   updatemarque(id: any, body: any) {
     return this.httpClient.put(`${this.baseUrl}/updatemarque/${id}`, body)
 
+  }
+  affectType(body: any) {
+    return this.httpClient.put(`${this.baseUrl}/affecttype/${body.marque}/${body._id}`, body)
   }
 }

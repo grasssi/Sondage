@@ -46,7 +46,7 @@ export class UpdateServicesComponent implements OnInit {
   get f() { return this.serviceForm.controls; }
 
   owners() {
-    this.ownerService.owners().subscribe((response: any) => {
+    this.ownerService.allowners().subscribe((response: any) => {
       this.myRes = response
     },
       (error: any) => {

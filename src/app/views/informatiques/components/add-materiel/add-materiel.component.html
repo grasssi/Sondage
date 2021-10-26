@@ -20,7 +20,7 @@
 
                 <div class="form-group">
                   <label class="col-form-label" for="type"> العتاد</label>
-                  <select ng-model="selectedItem" class="form-control" placeholder="العتاد" autocomplete="العتاد"
+                  <select ng-model="selectedItem"  class="form-control" placeholder="العتاد" autocomplete="العتاد"
                     formControlName="type" required
                     [ngClass]="{ 'is-invalid': submitted && f.type.errors, 'is-valid': f.type.touched && !f.type.errors }">
                     <option *ngFor="let type of myTypes" value="{{type._id}}">{{type.type}}</option>
@@ -30,22 +30,22 @@
                     <div *ngIf="f['type'].errors.required">Last Name is required</div>
                   </div>
                 </div>
-                <div *ngIf="matForm.value.type=='617672bc279347d53b8c2159';else other_content">
+                <!-- <div *ngIf="matForm.value.type=='617851cc5ff14e633aeff1dc';else other_content"> -->
                   <div class="form-group">
                     <label class="col-form-label" for="Marque">نوع العتاد</label>
                     <select ng-model="selectedItem" class="form-control" placeholder="type" autocomplete="type"
                       formControlName="type" required
                       [ngClass]="{ 'is-invalid': submitted && f.type.errors, 'is-valid': f.type.touched && !f.type.errors }">
-                      <option *ngFor="let marque of myMarques" value="{{marque._id}}">{{marque.marque}}</option>
+                      <option *ngFor="let marque of myfindMarques" value="{{marque._id}}">{{marque.marque}}</option>
                     </select>
-    
+
                     <div *ngIf="submitted && f['Marque'].errors" class="invalid-feedback">
                       <div *ngIf="f['Marque'].errors.required">First Name is required</div>
                     </div>
                   </div>
-              </div>
-              
-              <ng-template #other_content>other content here...</ng-template>
+              <!-- </div> -->
+
+              <!-- <ng-template #other_content>other content here...</ng-template> -->
 
                 <div class="form-group">
                   <label class="col-form-label" for="Nom">إسم العتاد</label>
@@ -76,6 +76,17 @@
                   </select>
                   <div *ngIf="submitted && f['service'].errors" class="invalid-feedback">
                     <div *ngIf="f['service'].errors.required">service is required</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label" for="owner">المسؤول</label>
+                  <select  ng-model="selectedItem" class="form-control" placeholder="المسؤول" autocomplete="المسؤول"
+                    formControlName="owner" required
+                    [ngClass]="{ 'is-invalid': submitted && f.owner.errors, 'is-valid': f.owner.touched && !f.owner.errors }">
+                    <option *ngFor="let owner of myOwners" value="{{owner._id}}">{{owner.firstName}} {{owner.lastName}}</option>
+                  </select>
+                  <div *ngIf="submitted && f['owner'].errors" class="invalid-feedback">
+                    <div *ngIf="f['owner'].errors.required">owner is required</div>
                   </div>
                 </div>
                 <div class="form-group">

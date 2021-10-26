@@ -20,7 +20,7 @@
 
                 <div class="form-group">
                   <label class="col-form-label" for="type"> العتاد</label>
-                  <select ng-model="selectedItem" class="form-control" placeholder="العتاد" autocomplete="العتاد"
+                  <select ng-model="selectedItem"  class="form-control" placeholder="العتاد" autocomplete="العتاد"
                     formControlName="type" required
                     [ngClass]="{ 'is-invalid': submitted && f.type.errors, 'is-valid': f.type.touched && !f.type.errors }">
                     <option *ngFor="let type of myTypes" value="{{type._id}}">{{type.type}}</option>
@@ -36,7 +36,7 @@
                     <select ng-model="selectedItem" class="form-control" placeholder="type" autocomplete="type"
                       formControlName="type" required
                       [ngClass]="{ 'is-invalid': submitted && f.type.errors, 'is-valid': f.type.touched && !f.type.errors }">
-                      <option *ngFor="let marque of myMarques" value="{{marque._id}}">{{marque.marque}}</option>
+                      <option *ngFor="let marque of myfindMarques" value="{{marque._id}}">{{marque.marque}}</option>
                     </select>
 
                     <div *ngIf="submitted && f['Marque'].errors" class="invalid-feedback">
@@ -80,7 +80,7 @@
                 </div>
                 <div class="form-group">
                   <label class="col-form-label" for="owner">المسؤول</label>
-                  <select ng-model="selectedItem" class="form-control" placeholder="المسؤول" autocomplete="المسؤول"
+                  <select  ng-model="selectedItem" class="form-control" placeholder="المسؤول" autocomplete="المسؤول"
                     formControlName="owner" required
                     [ngClass]="{ 'is-invalid': submitted && f.owner.errors, 'is-valid': f.owner.touched && !f.owner.errors }">
                     <option *ngFor="let owner of myOwners" value="{{owner._id}}">{{owner.firstName}} {{owner.lastName}}</option>

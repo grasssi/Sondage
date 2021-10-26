@@ -14,12 +14,12 @@ import { ValidationFormsService } from '../../../forms/validation-forms/validati
   styleUrls: ['./add-materiel.component.css']
 })
 export class AddMaterielComponent implements OnInit {
-
   submitted = false;
   formErrors: any;
   myRes: any;
   myTypes: any;
   myMarques: any;
+  myfindMarques:any ;
   myOwners:any;
   matForm = new FormGroup({
     Nom: new FormControl(''),
@@ -39,12 +39,13 @@ export class AddMaterielComponent implements OnInit {
     private marqueservice: MarquesService,
     public vf: ValidationFormsService) {
     this.formErrors = this.vf.errorMessages;
+
   }
   ngOnInit(): void {
     this.allservices();
     this.alltypes();
     this.allmarques();
-    this.allowners()
+    this.allowners();
   }
 
   get f() { return this.matForm.controls; }
@@ -53,10 +54,8 @@ export class AddMaterielComponent implements OnInit {
   allservices() {
     this.serviceservice.allServices().subscribe((response: any) => {
       this.myRes = response
-      this.toasterService.pop('success', 'Success Login', response.message);
     },
       (error: any) => {
-        this.toasterService.pop('error', 'Error', error.error.message);
         console.log(error);
       }
     );
@@ -65,10 +64,8 @@ export class AddMaterielComponent implements OnInit {
   alltypes() {
     this.typeservice.alltypes().subscribe((response: any) => {
       this.myTypes = response
-      this.toasterService.pop('success', 'Success Login', response.message);
     },
       (error: any) => {
-        this.toasterService.pop('error', 'Error', error.error.message);
         console.log(error);
       }
     );
@@ -78,14 +75,25 @@ export class AddMaterielComponent implements OnInit {
   allmarques() {
     this.marqueservice.allmarques().subscribe((response: any) => {
       this.myMarques = response
-      this.toasterService.pop('success', 'Success Login', response.message);
     },
       (error: any) => {
-        this.toasterService.pop('error', 'Error', error.error.message);
         console.log(error);
       }
     );
   }
+//find marques by type
+findmarques() {
+  console.log('eee',this.matForm.value);
+
+  this.marqueservice.findMarques(this.matForm.value.type).subscribe((response: any) => {
+    this.myfindMarques = response
+  },
+    (error: any) => {
+      console.log(error);
+    }
+  );
+}
+
 //get all owners
 allowners(){
   this.ownerservice.allowners().subscribe((response: any) => {

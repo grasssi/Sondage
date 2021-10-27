@@ -27,7 +27,8 @@ export class ValidationService {
     owner:'',
     SerialNumber:'',
     ram:'',
-    systeme:''
+    systeme:'',
+    application:''
 
   };
 
@@ -79,6 +80,9 @@ export class ValidationService {
       },
       systeme:{
         required:'Systeme is required '
+      },
+      application:{
+        required:'application is required '
       }
     };
   }

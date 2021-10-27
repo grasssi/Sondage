@@ -69,16 +69,6 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-form-label" for="Nom">إسم العتاد</label>
-                  <input class="form-control" id="Nom" type="text" formControlName="Nom" placeholder="إسم العتاد"
-                    autocomplete="given-name" required autofocus
-                    [ngClass]="{ 'is-invalid': submitted && f.Nom.errors, 'is-valid': f.Nom.touched && !f.Nom.errors }" />
-                  <div *ngIf="submitted && f['Nom'].errors" class="invalid-feedback">
-                    <div *ngIf="f['Nom'].errors.required">First Name is required</div>
-                  </div>
-                </div>
-
-                <div class="form-group">
                   <label class="col-form-label" for="SerialNumber">الرقم التسلسلي</label>
                   <input class="form-control" id="SerialNumber" type="text" formControlName="SerialNumber"
                     placeholder="الرقم التسلسلي" autocomplete="الرقم التسلسلي" required
@@ -109,6 +99,33 @@
                   </select>
                   <div *ngIf="submitted && f['owner'].errors" class="invalid-feedback">
                     <div *ngIf="f['owner'].errors.required">owner is required</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label" for="domaine">مجال الإستغلال</label>
+                  <select ng-model="selectedItem" class="form-control" placeholder="مجال الإستغلال"
+                    autocomplete="مجال الإستغلال" formControlName="domaine" required
+                    [ngClass]="{ 'is-invalid': submitted && f.domaine.errors, 'is-valid': f.domaine.touched && !f.domaine.errors }">
+                    <option value="1">منظومة </option>
+                    <option value="2">مكتبي</option>
+                    <option value="3"> أنترنات</option>
+                  </select>
+                  <div *ngIf="submitted && f['domaine'].errors" class="invalid-feedback">
+                    <div *ngIf="f['domaine'].errors.required">domaine is required</div>
+                  </div>
+                </div>
+                <div *ngIf="matForm.value.domaine =='1'">
+                  <div class="form-group">
+                    <label class="col-form-label" for="application"> اسم المنظومة</label>
+                    <select ng-model="selectedItem" class="form-control" placeholder="اسم المنظومة"
+                      autocomplete="اسم المنظومة" formControlName="application" required
+                      [ngClass]="{ 'is-invalid': submitted && f.application.errors, 'is-valid': f.application.touched && !f.application.errors }">
+                      <option *ngFor="let app of myApps" value="{{app._id}}">{{app.application}}</option>
+                    </select>
+
+                    <div *ngIf="submitted && f['application'].errors" class="invalid-feedback">
+                      <div *ngIf="f['application'].errors.required">application is required</div>
+                    </div>
                   </div>
                 </div>
                 <div class="form-group">

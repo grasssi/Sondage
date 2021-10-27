@@ -33,9 +33,9 @@
                 <!-- <div *ngIf="matForm.value.type=='617851cc5ff14e633aeff1dc';else other_content"> -->
                   <div class="form-group">
                     <label class="col-form-label" for="Marque">نوع العتاد</label>
-                    <select ng-model="selectedItem" class="form-control" placeholder="type" autocomplete="type"
-                      formControlName="type" required
-                      [ngClass]="{ 'is-invalid': submitted && f.type.errors, 'is-valid': f.type.touched && !f.type.errors }">
+                    <select ng-model="selectedItem" class="form-control" placeholder="نوع العتاد" autocomplete="نوع العتاد"
+                      formControlName="Marque" required
+                      [ngClass]="{ 'is-invalid': submitted && f.Marque.errors, 'is-valid': f.Marque.touched && !f.Marque.errors }">
                       <option *ngFor="let marque of myfindMarques" value="{{marque._id}}">{{marque.marque}}</option>
                     </select>
 

@@ -25,7 +25,10 @@ export class ValidationService {
     service: '',
     nomService:'',
     owner:'',
-    SerialNumber:''
+    SerialNumber:'',
+    ram:'',
+    systeme:''
+
   };
 
   constructor() {
@@ -70,6 +73,12 @@ export class ValidationService {
       },
       SerialNumber:{
         required:'SerialNumber is required '
+      },
+      ram:{
+        required:'Ram is required '
+      },
+      systeme:{
+        required:'Systeme is required '
       }
     };
   }

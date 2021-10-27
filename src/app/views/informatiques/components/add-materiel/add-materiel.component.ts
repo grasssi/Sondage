@@ -4,7 +4,9 @@ import { Router } from '@angular/router';
 import { ToasterService } from 'angular2-toaster';
 import { MarquesService } from '../../../../services/marques.service';
 import { OwnerService } from '../../../../services/owner.service';
+import { RamService } from '../../../../services/ram.service';
 import { ServiceService } from '../../../../services/service.service';
+import { SystemeService } from '../../../../services/systeme.service';
 import { TypesService } from '../../../../services/types.service';
 import { ValidationFormsService } from '../../../forms/validation-forms/validation-forms.service';
 
@@ -20,6 +22,8 @@ export class AddMaterielComponent implements OnInit {
   myTypes: any;
   idTypes: any;
   myMarques: any;
+  myRam:any;
+  mySysteme:any;
   myfindMarques: any;
   myOwners: any;
   matForm = new FormGroup({
@@ -29,6 +33,8 @@ export class AddMaterielComponent implements OnInit {
     service: new FormControl(''),
     SerialNumber: new FormControl(''),
     owner: new FormControl(''),
+    ram: new FormControl(''),
+    systeme: new FormControl(''),
     accept: new FormControl(false, Validators.requiredTrue)
   });
 
@@ -37,6 +43,8 @@ export class AddMaterielComponent implements OnInit {
     private ownerservice: OwnerService,
     private serviceservice: ServiceService,
     private typeservice: TypesService,
+    private systemeservice: SystemeService,
+    private ramservice: RamService,
     private marqueservice: MarquesService,
     public vf: ValidationFormsService) {
     this.formErrors = this.vf.errorMessages;
@@ -47,6 +55,8 @@ export class AddMaterielComponent implements OnInit {
     this.alltypes();
     this.allmarques();
     this.allowners();
+    this.allram();
+    this.allsystemes();
   }
 
   get f() { return this.matForm.controls; }
@@ -61,6 +71,26 @@ export class AddMaterielComponent implements OnInit {
       }
     );
   }
+  //get all systeme
+  allsystemes() {
+    this.systemeservice.allSysteme().subscribe((response: any) => {
+      this.mySysteme = response
+    },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
+//get all ram
+allram() {
+  this.ramservice.allram().subscribe((response: any) => {
+    this.myRam = response
+  },
+    (error: any) => {
+      console.log(error);
+    }
+  );
+}
   //get all types
   alltypes() {
     this.typeservice.alltypes().subscribe((response: any) => {

@@ -18,9 +18,10 @@ export class AddMaterielComponent implements OnInit {
   formErrors: any;
   myRes: any;
   myTypes: any;
+  idTypes: any;
   myMarques: any;
-  myfindMarques:any ;
-  myOwners:any;
+  myfindMarques: any;
+  myOwners: any;
   matForm = new FormGroup({
     Nom: new FormControl(''),
     type: new FormControl(''),
@@ -81,31 +82,33 @@ export class AddMaterielComponent implements OnInit {
       }
     );
   }
-//find marques by type
-findmarques() {
-  console.log('eee',this.matForm.value);
+  //find marques by type
+  findmarques() {
+    //.matForm.value.types=this.matForm.controls.type.value
 
-  this.marqueservice.findMarques(this.matForm.value.type).subscribe((response: any) => {
-    this.myfindMarques = response
-  },
-    (error: any) => {
-      console.log(error);
-    }
-  );
-}
+    this.marqueservice.findMarques(this.matForm.value.type).subscribe((response: any) => {
+      this.myfindMarques = response
+      console.log(this.myfindMarques);
 
-//get all owners
-allowners(){
-  this.ownerservice.allowners().subscribe((response: any) => {
-    this.myOwners = response
-    this.toasterService.pop('success', 'Success Login', response.message);
-  },
-    (error: any) => {
-      this.toasterService.pop('error', 'Error', error.error.message);
-      console.log(error);
-    }
-  );
-}
+    },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
+
+  //get all owners
+  allowners() {
+    this.ownerservice.allowners().subscribe((response: any) => {
+      this.myOwners = response
+      this.toasterService.pop('success', 'Success Login', response.message);
+    },
+      (error: any) => {
+        this.toasterService.pop('error', 'Error', error.error.message);
+        console.log(error);
+      }
+    );
+  }
 
   affectService(body: any) {
     //   this.ownerservice.affectService(body).subscribe((response: any) => { },

@@ -44,17 +44,17 @@ export const navItems: NavData[] = [
     name: 'Theme'
   },
   {
-    name: 'Informatiques',
+    name: 'عتاد إعلامية',
     url: '/informatiques',
     icon: 'icon-puzzle',
     children: [
       {
-        name: 'List',
+        name: 'قائمة شاملة',
         url: '/informatiques/listmateriels',
         icon: 'icon-puzzle'
       },
       {
-        name: 'Add',
+        name: 'إضافة عتاد',
         url: '/informatiques/addmateriel',
         icon: 'icon-puzzle'
       },

@@ -20,7 +20,7 @@
 
                 <div class="form-group">
                   <label class="col-form-label" for="type"> العتاد</label>
-                  <select ng-model="selectedItem"  class="form-control" placeholder="العتاد" autocomplete="العتاد"
+                  <select (change)="findmarques()" ng-model="selectedItem"  class="form-control" placeholder="العتاد" autocomplete="العتاد"
                     formControlName="type" required
                     [ngClass]="{ 'is-invalid': submitted && f.type.errors, 'is-valid': f.type.touched && !f.type.errors }">
                     <option *ngFor="let type of myTypes" value="{{type._id}}">{{type.type}}</option>

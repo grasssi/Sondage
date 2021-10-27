@@ -19,8 +19,10 @@ export class MarquesService {
     )
   }
 
-  findMarques(body:any){
-    return this.httpClient.get<TableData>(`${this.baseUrl}/findmarques`,body).pipe(
+  findMarques(id: any) {
+
+
+    return this.httpClient.get<TableData>(`${this.baseUrl}/findmarques/${id}`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError)
     )

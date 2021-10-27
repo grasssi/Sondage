@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToasterService } from 'angular2-toaster';
+import { ApplicationService } from '../../../../services/application.service';
 import { MarquesService } from '../../../../services/marques.service';
 import { OwnerService } from '../../../../services/owner.service';
+import { RamService } from '../../../../services/ram.service';
 import { ServiceService } from '../../../../services/service.service';
+import { SystemeService } from '../../../../services/systeme.service';
 import { TypesService } from '../../../../services/types.service';
 import { ValidationFormsService } from '../../../forms/validation-forms/validation-forms.service';
 
@@ -20,6 +23,9 @@ export class AddMaterielComponent implements OnInit {
   myTypes: any;
   idTypes: any;
   myMarques: any;
+  myApps: any;
+  myRam: any;
+  mySysteme: any;
   myfindMarques: any;
   myOwners: any;
   matForm = new FormGroup({
@@ -29,6 +35,10 @@ export class AddMaterielComponent implements OnInit {
     service: new FormControl(''),
     SerialNumber: new FormControl(''),
     owner: new FormControl(''),
+    ram: new FormControl(''),
+    systeme: new FormControl(''),
+    domaine: new FormControl(''),
+    application: new FormControl(''),
     accept: new FormControl(false, Validators.requiredTrue)
   });
 
@@ -37,6 +47,9 @@ export class AddMaterielComponent implements OnInit {
     private ownerservice: OwnerService,
     private serviceservice: ServiceService,
     private typeservice: TypesService,
+    private systemeservice: SystemeService,
+    private applicationservice: ApplicationService,
+    private ramservice: RamService,
     private marqueservice: MarquesService,
     public vf: ValidationFormsService) {
     this.formErrors = this.vf.errorMessages;
@@ -47,6 +60,9 @@ export class AddMaterielComponent implements OnInit {
     this.alltypes();
     this.allmarques();
     this.allowners();
+    this.allram();
+    this.allsystemes();
+    this.allapplication();
   }
 
   get f() { return this.matForm.controls; }
@@ -55,6 +71,36 @@ export class AddMaterielComponent implements OnInit {
   allservices() {
     this.serviceservice.allServices().subscribe((response: any) => {
       this.myRes = response
+    },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
+  //get all applications
+  allapplication() {
+    this.applicationservice.allApplication().subscribe((response: any) => {
+      this.myApps = response
+    },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
+  //get all systeme
+  allsystemes() {
+    this.systemeservice.allSysteme().subscribe((response: any) => {
+      this.mySysteme = response
+    },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
+  //get all ram
+  allram() {
+    this.ramservice.allram().subscribe((response: any) => {
+      this.myRam = response
     },
       (error: any) => {
         console.log(error);

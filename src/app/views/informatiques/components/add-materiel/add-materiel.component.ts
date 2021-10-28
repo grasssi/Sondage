@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToasterService } from 'angular2-toaster';
 import { ApplicationService } from '../../../../services/application.service';
+import { InformatiqueService } from '../../../../services/informatique.service';
 import { MarquesService } from '../../../../services/marques.service';
 import { OwnerService } from '../../../../services/owner.service';
 import { RamService } from '../../../../services/ram.service';
@@ -29,7 +30,6 @@ export class AddMaterielComponent implements OnInit {
   myfindMarques: any;
   myOwners: any;
   matForm = new FormGroup({
-    Nom: new FormControl(''),
     type: new FormControl(''),
     Marque: new FormControl(''),
     service: new FormControl(''),
@@ -52,6 +52,7 @@ export class AddMaterielComponent implements OnInit {
     private applicationservice: ApplicationService,
     private ramservice: RamService,
     private marqueservice: MarquesService,
+    private infoservice: InformatiqueService,
     public vf: ValidationFormsService) {
     this.formErrors = this.vf.errorMessages;
 
@@ -131,8 +132,6 @@ export class AddMaterielComponent implements OnInit {
   }
   //find marques by type
   findmarques() {
-    //.matForm.value.types=this.matForm.controls.type.value
-
     this.marqueservice.findMarques(this.matForm.value.type).subscribe((response: any) => {
       this.myfindMarques = response
       console.log(this.myfindMarques);
@@ -148,10 +147,8 @@ export class AddMaterielComponent implements OnInit {
   allowners() {
     this.ownerservice.allowners().subscribe((response: any) => {
       this.myOwners = response
-      this.toasterService.pop('success', 'Success Login', response.message);
     },
       (error: any) => {
-        this.toasterService.pop('error', 'Error', error.error.message);
         console.log(error);
       }
     );
@@ -165,22 +162,22 @@ export class AddMaterielComponent implements OnInit {
     //     }
     //   );
   }
-  addowner() {
-    // this.submitted = true;
-    // if (this.matForm.invalid) {
-    //   return
-    // };
-    // //with Services
-    // const addowner = this.ownerservice.addowner(this.matForm.value).subscribe((response: any) => {
-    //   this.toasterService.pop('success', 'Success Login', response.message);
-    //   // this.affectService(this.matForm.value)
-    //   this.router.navigate(['/owners']);
-    // },
-    //   (error: any) => {
-    //     this.toasterService.pop('error', 'Error', error.error.message);
-    //     console.log(error);
-    //   }
-    // );
+  addmatInfo() {
+    this.submitted = true;
+    if (this.matForm.invalid) {
+      return
+    };
+    //with Services
+    const addowner = this.infoservice.addmatInfo(this.matForm.value).subscribe((response: any) => {
+      this.toasterService.pop('success', 'Success Login', response.message);
+      // this.affectService(this.matForm.value)
+      this.router.navigate(['/owners']);
+    },
+      (error: any) => {
+        this.toasterService.pop('error', 'Error', error.error.message);
+        console.log(error);
+      }
+    );
   }
 
   onReset() {

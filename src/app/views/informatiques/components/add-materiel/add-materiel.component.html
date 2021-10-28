@@ -1,4 +1,4 @@
-<div class="animated fadeIn">
+<div class="animated fadeIn ">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
@@ -18,7 +18,7 @@
               <h6>Simple Form</h6>
               <form [formGroup]="matForm" novalidate (ngSubmit)="onSubmit()" class="needs-validation">
 
-                <div class="form-group">
+                <div class="form-group" >
                   <label class="col-form-label" for="type"> العتاد</label>
                   <select (change)="findmarques()" ng-model="selectedItem" class="form-control" placeholder="العتاد"
                     autocomplete="العتاد" formControlName="type" required
@@ -155,7 +155,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <button class="btn btn-primary mr-1" (click)="addowner()"
+                  <button class="btn btn-primary mr-1" (click)="addmatInfo()"
                     [disabled]="matForm.pristine || matForm.invalid">Submit</button>
                   <button class="btn btn-success mr-1" type="submit" [disabled]="matForm.valid">Validate</button>
                   <button class="btn btn-danger" type="reset" [disabled]="matForm.pristine && !submitted"

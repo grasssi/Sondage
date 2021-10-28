@@ -28,7 +28,8 @@ export class ValidationService {
     SerialNumber:'',
     ram:'',
     systeme:'',
-    application:''
+    application:'',
+    situation:''
 
   };
 
@@ -83,6 +84,9 @@ export class ValidationService {
       },
       application:{
         required:'application is required '
+      },
+      situation:{
+        required:'situation is required '
       }
     };
   }

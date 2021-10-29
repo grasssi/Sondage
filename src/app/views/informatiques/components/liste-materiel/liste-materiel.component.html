@@ -19,17 +19,35 @@
         <thead>
           <tr>
             <th style="width: 20%">
-              <mfDefaultSorter by="FirstName">Firstname</mfDefaultSorter>
+              <mfDefaultSorter by="FirstName">العتاد</mfDefaultSorter>
             </th>
             <th style="width: 20%">
-              <mfDefaultSorter by="LastName">Lastname</mfDefaultSorter>
+              <mfDefaultSorter by="LastName">نوع العتاد</mfDefaultSorter>
             </th>
             <th style="width: 10%">
-              <mfDefaultSorter by="email">Email</mfDefaultSorter>
+              <mfDefaultSorter by="email">الذاكرة العشوائية</mfDefaultSorter>
             </th>
             <th style="width: 10%">
-              <mfDefaultSorter by="Service">Service</mfDefaultSorter>
+              <mfDefaultSorter by="Service">نضام التشغيل</mfDefaultSorter>
             </th>
+            <th style="width: 10%">
+              <mfDefaultSorter by="Service">الرقم التسلسلي</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+              <mfDefaultSorter by="Service">الوضعية</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+              <mfDefaultSorter by="Service">المصلحة</mfDefaultSorter>
+            </th>
+          <th style="width: 10%">
+            <mfDefaultSorter by="Service">المسؤول</mfDefaultSorter>
+          </th>
+        <th style="width: 10%">
+          <mfDefaultSorter by="Service">مجال الإستغلال</mfDefaultSorter>
+        </th>
+      <th style="width: 10%">
+        <mfDefaultSorter by="Service">اسم المنظومة</mfDefaultSorter>
+      </th>
             <th style="width: 10%">
               <mfDefaultSorter>Action</mfDefaultSorter>
             </th>
@@ -37,10 +55,16 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of mf.data">
-            <td>{{item.firstName}}</td>
-            <td class="text-left">{{item.lastName}}</td>
-            <td>{{item.email}}</td>
+            <td>{{item.type}}</td>
+            <td class="text-left">{{item.Marque}}</td>
             <td>{{item.service}}</td>
+            <td>{{item.SerialNumber}}</td>
+            <td>{{item.owner}}</td>
+            <td>{{item.ram}}</td>
+            <td>{{item.systeme}}</td>
+            <td>{{item.domaine}}</td>
+            <td>{{item.application}}</td>
+            <td>{{item.situation}}</td>
             <td>
               <button type="button" [routerLink]="['/owners/update',item._id]" class="btn btn-info"><i
                   class="fa fa-refresh fa-lgs"></i>

@@ -12,8 +12,9 @@ export class ListeMaterielComponent implements OnInit {
   constructor(private infoService: InformatiqueService) {}
 
   ngOnInit(): void {
-    this.infoService.allmatInfos().subscribe(
+    const res=this.infoService.allmatInfos().subscribe(
         (data: TableData) => {
+          console.log(data[1]);
           setTimeout(() => {
             this.data = [...data];
           }, 1000);
@@ -22,6 +23,7 @@ export class ListeMaterielComponent implements OnInit {
         error => this.error = error // error path
 
       );
+
   }
 
   public toInt(num: string) {

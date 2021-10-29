@@ -4,7 +4,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { throwError } from 'rxjs';
 
-export interface OwnerData {
+export interface InfoData {
 
   type: string,
   Marque: string,
@@ -17,7 +17,7 @@ export interface OwnerData {
   application: string,
   situation: string
 }
-export interface TableData extends Array<OwnerData> { }
+export interface TableData extends Array<InfoData> { }
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +30,6 @@ export class InformatiqueService {
 
   allmatInfos() {
     return this.httpClient.get<TableData>(`${this.baseUrl}/allminfos`).pipe(
-
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError)
     )

@@ -1,4 +1,4 @@
-<div class="animated fadeIn">
+<div class="animated fadeIn ">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
@@ -18,7 +18,7 @@
               <h6>Simple Form</h6>
               <form [formGroup]="matForm" novalidate (ngSubmit)="onSubmit()" class="needs-validation">
 
-                <div class="form-group">
+                <div class="form-group" >
                   <label class="col-form-label" for="type"> العتاد</label>
                   <select (change)="findmarques()" ng-model="selectedItem" class="form-control" placeholder="العتاد"
                     autocomplete="العتاد" formControlName="type" required
@@ -72,12 +72,27 @@
                   <label class="col-form-label" for="SerialNumber">الرقم التسلسلي</label>
                   <input class="form-control" id="SerialNumber" type="text" formControlName="SerialNumber"
                     placeholder="الرقم التسلسلي" autocomplete="الرقم التسلسلي" required
-                    [ngClass]="{ 'is-invalid': submitted && f.Marque.errors, 'is-valid': f.Marque.touched && !f.Marque.errors }" />
-                  <div *ngIf="submitted && f['Marque'].errors" class="invalid-feedback">
-                    <div *ngIf="f['Marque'].errors.required">Marque is required</div>
-                    <div *ngIf="f['Marque'].errors.Marque">{{formErrors.Marque.Marque}}</div>
+                    [ngClass]="{ 'is-invalid': submitted && f.SerialNumber.errors, 'is-valid': f.SerialNumber.touched && !f.SerialNumber.errors }" />
+                  <div *ngIf="submitted && f['SerialNumber'].errors" class="invalid-feedback">
+                    <div *ngIf="f['SerialNumber'].errors.required">SerialNumber is required</div>
+                    <div *ngIf="f['SerialNumber'].errors.SerialNumber">{{formErrors.SerialNumber}}</div>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-form-label" for="situation">الوضعية</label>
+                  <select ng-model="selectedItem" class="form-control" placeholder="الوضعية"
+                    autocomplete="الوضعية" formControlName="situation" required
+                    [ngClass]="{ 'is-invalid': submitted && f.situation.errors, 'is-valid': f.situation.touched && !f.domaine.errors }">
+                    <option value="1">عملياتي </option>
+                    <option value="2">مخزون</option>
+                    <option value="3"> التصليح</option>
+                    <option value="4"> غير عملياتي</option>
+                  </select>
+                  <div *ngIf="submitted && f['situation'].errors" class="invalid-feedback">
+                    <div *ngIf="f['situation'].errors.required">situation is required</div>
+                  </div>
+                </div>
+                <div *ngIf="matForm.value.situation =='1'">
                 <div class="form-group">
                   <label class="col-form-label" for="service">المصلحة</label>
                   <select ng-model="selectedItem" class="form-control" placeholder="service" autocomplete="service"
@@ -128,6 +143,7 @@
                     </div>
                   </div>
                 </div>
+                </div>
                 <div class="form-group">
                   <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="accept" formControlName="accept" required
@@ -139,7 +155,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <button class="btn btn-primary mr-1" (click)="addowner()"
+                  <button class="btn btn-primary mr-1" (click)="addmatInfo()"
                     [disabled]="matForm.pristine || matForm.invalid">Submit</button>
                   <button class="btn btn-success mr-1" type="submit" [disabled]="matForm.valid">Validate</button>
                   <button class="btn btn-danger" type="reset" [disabled]="matForm.pristine && !submitted"

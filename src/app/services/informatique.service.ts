@@ -30,6 +30,7 @@ export class InformatiqueService {
 
   allmatInfos() {
     return this.httpClient.get<TableData>(`${this.baseUrl}/allminfos`).pipe(
+
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError)
     )

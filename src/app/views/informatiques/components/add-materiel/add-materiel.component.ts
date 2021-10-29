@@ -171,7 +171,7 @@ export class AddMaterielComponent implements OnInit {
     const addowner = this.infoservice.addmatInfo(this.matForm.value).subscribe((response: any) => {
       this.toasterService.pop('success', 'Success Login', response.message);
       // this.affectService(this.matForm.value)
-      this.router.navigate(['/owners']);
+      this.router.navigate(['/informatiques/listmateriels']);
     },
       (error: any) => {
         this.toasterService.pop('error', 'Error', error.error.message);

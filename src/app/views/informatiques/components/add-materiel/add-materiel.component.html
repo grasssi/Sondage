@@ -42,7 +42,7 @@
                     <div *ngIf="f['Marque'].errors.required">First Name is required</div>
                   </div>
                 </div>
-                <div *ngIf="matForm.value.type=='617672bc279347d53b8c2159'">
+                <div *ngIf="matForm.value.type=='617851db5ff14e633aeff1e0'">
                   <div class="form-group">
                     <label class="col-form-label" for="ram">الذاكرة العشوائية</label>
                     <select ng-model="selectedItem" class="form-control" placeholder="الذاكرة العشوائية"
@@ -83,16 +83,16 @@
                   <select ng-model="selectedItem" class="form-control" placeholder="الوضعية"
                     autocomplete="الوضعية" formControlName="situation" required
                     [ngClass]="{ 'is-invalid': submitted && f.situation.errors, 'is-valid': f.situation.touched && !f.domaine.errors }">
-                    <option value="1">عملياتي </option>
-                    <option value="2">مخزون</option>
-                    <option value="3"> التصليح</option>
-                    <option value="4"> غير عملياتي</option>
+                    <option value="Operational">عملياتي </option>
+                    <option value="stock">مخزون</option>
+                    <option value="repair"> التصليح</option>
+                    <option value="non operative"> غير عملياتي</option>
                   </select>
                   <div *ngIf="submitted && f['situation'].errors" class="invalid-feedback">
                     <div *ngIf="f['situation'].errors.required">situation is required</div>
                   </div>
                 </div>
-                <div *ngIf="matForm.value.situation =='1'">
+                <div *ngIf="matForm.value.situation =='Operational'">
                 <div class="form-group">
                   <label class="col-form-label" for="service">المصلحة</label>
                   <select ng-model="selectedItem" class="form-control" placeholder="service" autocomplete="service"
@@ -121,15 +121,15 @@
                   <select ng-model="selectedItem" class="form-control" placeholder="مجال الإستغلال"
                     autocomplete="مجال الإستغلال" formControlName="domaine" required
                     [ngClass]="{ 'is-invalid': submitted && f.domaine.errors, 'is-valid': f.domaine.touched && !f.domaine.errors }">
-                    <option value="1">منظومة </option>
-                    <option value="2">مكتبي</option>
-                    <option value="3"> أنترنات</option>
+                    <option value="application">منظومة </option>
+                    <option value="bureautique">مكتبي</option>
+                    <option value="internet"> أنترنات</option>
                   </select>
                   <div *ngIf="submitted && f['domaine'].errors" class="invalid-feedback">
                     <div *ngIf="f['domaine'].errors.required">domaine is required</div>
                   </div>
                 </div>
-                <div *ngIf="matForm.value.domaine =='1'">
+                <div *ngIf="matForm.value.domaine =='application'">
                   <div class="form-group">
                     <label class="col-form-label" for="application"> اسم المنظومة</label>
                     <select ng-model="selectedItem" class="form-control" placeholder="اسم المنظومة"

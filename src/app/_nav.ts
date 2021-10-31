@@ -41,7 +41,7 @@ export const navItems: NavData[] = [
   },
   {
     title: true,
-    name: 'Theme'
+    name: 'عتاد'
   },
   {
     name: 'عتاد إعلامية',
@@ -59,6 +59,49 @@ export const navItems: NavData[] = [
         icon: 'icon-puzzle'
       },
     ]
+  },
+  {
+    name: 'عتاد إشارة',
+    url: '/informatiques',
+    icon: 'icon-puzzle',
+    children: [
+      {
+        name: 'قائمة شاملة',
+        url: '/informatiques/listmateriels',
+        icon: 'icon-puzzle'
+      },
+      {
+        name: 'إضافة عتاد',
+        url: '/informatiques/addmateriel',
+        icon: 'icon-puzzle'
+      },
+    ]
+  },
+  {
+    title: true,
+    name: 'القاعدة الجوية'
+  },
+  {
+  name: 'الوحدات والمصالح',
+    url: '/services',
+    icon: 'icon-drop',
+    children: [
+      {
+        name: 'قائمة شاملة',
+        url: '/services/listservices',
+        icon: 'icon-puzzle'
+      },
+      {
+        name: 'إضافة مصالح أو وحدات',
+        url: '/services/addservice',
+        icon: 'icon-puzzle'
+      },
+    ]
+  },
+  {
+    name: 'Typography',
+    url: '/theme/typography',
+    icon: 'icon-pencil'
   },
   {
     name: 'Colors',
@@ -79,7 +122,7 @@ export const navItems: NavData[] = [
     url: '/bases',
     icon: 'icon-puzzle',
     children: [
-      
+
       {
         name: 'Cards',
         url: '/base/cards',

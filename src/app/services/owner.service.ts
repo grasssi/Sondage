@@ -27,6 +27,13 @@ export class OwnerService {
       catchError(this.handleError)
     )
   }
+  //get all owners without service
+  allownersWs() {
+    return this.httpClient.get<TableData>(`${this.baseUrl}/allownersws`).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError)
+    )
+  }
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

@@ -20,6 +20,7 @@ export class AddServicesComponent implements OnInit {
   submitted = false;
   formErrors: any;
   myRes: any;
+  allownersws:any;
   serviceForm = new FormGroup({
     nomService: new FormControl('', [Validators.required]),
     owner: new FormControl('', Validators.required),
@@ -37,10 +38,11 @@ export class AddServicesComponent implements OnInit {
     this.formErrors = this.vf.errorMessages;
   }
   ngOnInit(): void {
-    this.allowners()
+    this.allownerswse()
   }
 
   get f() { return this.serviceForm.controls; }
+  //all owners
   allowners() {
     this.ownerservice.allowners().subscribe((response: any) => {
       this.myRes = response
@@ -52,7 +54,18 @@ export class AddServicesComponent implements OnInit {
       }
     );
   }
-
+  //owners without service
+  allownerswse() {
+    this.ownerservice.allownersWs().subscribe((response: any) => {
+      this.allownersws = response
+      this.toasterService.pop('success', 'Success Login', response.message);
+    },
+      (error: any) => {
+        this.toasterService.pop('error', 'Error', error.error.message);
+        console.log(error);
+      }
+    );
+  }
   // affectService(body: any) {
   //   this.service.affectService(body).subscribe((response: any) => { },
   //     (error: any) => {

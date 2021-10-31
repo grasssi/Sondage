@@ -25,29 +25,29 @@
               <mfDefaultSorter by="LastName">نوع العتاد</mfDefaultSorter>
             </th>
             <th style="width: 10%">
-              <mfDefaultSorter by="email">الذاكرة العشوائية</mfDefaultSorter>
-            </th>
-            <th style="width: 10%">
-              <mfDefaultSorter by="Service">نضام التشغيل</mfDefaultSorter>
-            </th>
-            <th style="width: 10%">
               <mfDefaultSorter by="Service">الرقم التسلسلي</mfDefaultSorter>
             </th>
             <th style="width: 10%">
               <mfDefaultSorter by="Service">الوضعية</mfDefaultSorter>
             </th>
             <th style="width: 10%">
+              <mfDefaultSorter by="email">الذاكرة العشوائية</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+              <mfDefaultSorter by="Service">نضام التشغيل</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
               <mfDefaultSorter by="Service">المصلحة</mfDefaultSorter>
             </th>
-          <th style="width: 10%">
-            <mfDefaultSorter by="Service">المسؤول</mfDefaultSorter>
-          </th>
-        <th style="width: 10%">
-          <mfDefaultSorter by="Service">مجال الإستغلال</mfDefaultSorter>
-        </th>
-      <th style="width: 10%">
-        <mfDefaultSorter by="Service">اسم المنظومة</mfDefaultSorter>
-      </th>
+            <th style="width: 10%">
+              <mfDefaultSorter by="Service">المسؤول</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+              <mfDefaultSorter by="Service">مجال الإستغلال</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+              <mfDefaultSorter by="Service">اسم المنظومة</mfDefaultSorter>
+            </th>
             <th style="width: 10%">
               <mfDefaultSorter>Action</mfDefaultSorter>
             </th>
@@ -57,14 +57,18 @@
           <tr *ngFor="let item of mf.data">
             <td>{{item.type.type}}</td>
             <td class="text-left">{{item.Marque.marque}}</td>
-            <td>{{item.ram.capacite}}</td>
-            <td>{{item.systeme.systeme}}</td>
             <td>{{item.SerialNumber}}</td>
-            <td>{{item.situation}}</td>
-            <td>{{item.service.nomService}}</td>
-            <td>{{item.owner.firstName}} {{item.owner.lastName}}</td>
+            <td>
+              <label [ngClass]="{'badge badge-success': item.situation === 'عملياتي',
+             'badge badge-secondary': item.situation === 'مخزون',
+             'badge badge-danger': item.situation === 'غير عملياتي'}">{{item.situation}}</label>
+            </td>
+            <td>{{item.ram?.capacite}}</td>
+            <td>{{item.systeme?.systeme}}</td>
+            <td>{{item.service?.nomService}}</td>
+            <td>{{item.owner?.firstName}} {{item.owner?.lastName}}</td>
             <td>{{item.domaine}}</td>
-            <td>{{item.application.application}}</td>
+            <td>{{item.application?.application}}</td>
             <td>
               <button type="button" [routerLink]="['/owners/update',item._id]" class="btn btn-info"><i
                   class="fa fa-refresh fa-lgs"></i>

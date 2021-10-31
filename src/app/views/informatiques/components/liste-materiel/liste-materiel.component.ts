@@ -14,7 +14,6 @@ export class ListeMaterielComponent implements OnInit {
   ngOnInit(): void {
     const res=this.infoService.allmatInfos().subscribe(
         (data: TableData) => {
-          console.log(data[1]);
           setTimeout(() => {
             this.data = [...data];
           }, 1000);

@@ -11,14 +11,12 @@
             </a>
           </div>
         </div>
-        <div class="card-body">Angular Form Validation
+        <div class="card-body">إضافة عتاد إعلامية
           <hr>
           <div class="row">
             <div class="col-md-6">
-              <h6>Simple Form</h6>
               <form [formGroup]="matForm" novalidate (ngSubmit)="onSubmit()" class="needs-validation">
-
-                <div class="form-group" >
+                <div class="form-group">
                   <label class="col-form-label" for="type"> العتاد</label>
                   <select (change)="findmarques()" ng-model="selectedItem" class="form-control" placeholder="العتاد"
                     autocomplete="العتاد" formControlName="type" required
@@ -30,7 +28,7 @@
                     <div *ngIf="f['type'].errors.required">Last Name is required</div>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" >
                   <label class="col-form-label" for="Marque">نوع العتاد</label>
                   <select ng-model="selectedItem" class="form-control" placeholder="نوع العتاد"
                     autocomplete="نوع العتاد" formControlName="Marque" required
@@ -80,8 +78,8 @@
                 </div>
                 <div class="form-group">
                   <label class="col-form-label" for="situation">الوضعية</label>
-                  <select ng-model="selectedItem" class="form-control" placeholder="الوضعية"
-                    autocomplete="الوضعية" formControlName="situation" required
+                  <select ng-model="selectedItem" class="form-control" placeholder="الوضعية" autocomplete="الوضعية"
+                    formControlName="situation" required
                     [ngClass]="{ 'is-invalid': submitted && f.situation.errors, 'is-valid': f.situation.touched && !f.domaine.errors }">
                     <option value="Operational">عملياتي </option>
                     <option value="stock">مخزون</option>
@@ -93,56 +91,57 @@
                   </div>
                 </div>
                 <div *ngIf="matForm.value.situation =='Operational'">
-                <div class="form-group">
-                  <label class="col-form-label" for="service">المصلحة</label>
-                  <select ng-model="selectedItem" class="form-control" placeholder="service" autocomplete="service"
-                    formControlName="service" required
-                    [ngClass]="{ 'is-invalid': submitted && f.service.errors, 'is-valid': f.service.touched && !f.service.errors }">
-                    <option *ngFor="let user of myRes" value="{{user._id}}">{{user.nomService}}</option>
-                  </select>
-                  <div *ngIf="submitted && f['service'].errors" class="invalid-feedback">
-                    <div *ngIf="f['service'].errors.required">service is required</div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-form-label" for="owner">المسؤول</label>
-                  <select ng-model="selectedItem" class="form-control" placeholder="المسؤول" autocomplete="المسؤول"
-                    formControlName="owner" required
-                    [ngClass]="{ 'is-invalid': submitted && f.owner.errors, 'is-valid': f.owner.touched && !f.owner.errors }">
-                    <option *ngFor="let owner of myOwners" value="{{owner._id}}">{{owner.firstName}} {{owner.lastName}}
-                    </option>
-                  </select>
-                  <div *ngIf="submitted && f['owner'].errors" class="invalid-feedback">
-                    <div *ngIf="f['owner'].errors.required">owner is required</div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-form-label" for="domaine">مجال الإستغلال</label>
-                  <select ng-model="selectedItem" class="form-control" placeholder="مجال الإستغلال"
-                    autocomplete="مجال الإستغلال" formControlName="domaine" required
-                    [ngClass]="{ 'is-invalid': submitted && f.domaine.errors, 'is-valid': f.domaine.touched && !f.domaine.errors }">
-                    <option value="application">منظومة </option>
-                    <option value="bureautique">مكتبي</option>
-                    <option value="internet"> أنترنات</option>
-                  </select>
-                  <div *ngIf="submitted && f['domaine'].errors" class="invalid-feedback">
-                    <div *ngIf="f['domaine'].errors.required">domaine is required</div>
-                  </div>
-                </div>
-                <div *ngIf="matForm.value.domaine =='application'">
                   <div class="form-group">
-                    <label class="col-form-label" for="application"> اسم المنظومة</label>
-                    <select ng-model="selectedItem" class="form-control" placeholder="اسم المنظومة"
-                      autocomplete="اسم المنظومة" formControlName="application" required
-                      [ngClass]="{ 'is-invalid': submitted && f.application.errors, 'is-valid': f.application.touched && !f.application.errors }">
-                      <option *ngFor="let app of myApps" value="{{app._id}}">{{app.application}}</option>
+                    <label class="col-form-label" for="service">المصلحة</label>
+                    <select ng-model="selectedItem" class="form-control" placeholder="service" autocomplete="service"
+                      formControlName="service">
+                      <!-- [ngClass]="{ 'is-invalid': submitted && f.service.errors, 'is-valid': f.service.touched && !f.service.errors }"> -->
+                      <option *ngFor="let user of myRes" value="{{user._id}}">{{user.nomService}}</option>
                     </select>
-
-                    <div *ngIf="submitted && f['application'].errors" class="invalid-feedback">
-                      <div *ngIf="f['application'].errors.required">application is required</div>
+                    <div *ngIf="submitted && f['service'].errors" class="invalid-feedback">
+                      <div *ngIf="f['service'].errors.required">service is required</div>
                     </div>
                   </div>
-                </div>
+                  <div class="form-group">
+                    <label class="col-form-label" for="owner">المسؤول</label>
+                    <select ng-model="selectedItem" class="form-control" placeholder="المسؤول" autocomplete="المسؤول"
+                      formControlName="owner">
+                      <!-- [ngClass]="{ 'is-invalid': submitted && f.owner.errors, 'is-valid': f.owner.touched && !f.owner.errors }"> -->
+                      <option *ngFor="let owner of myOwners" value="{{owner._id}}">{{owner.firstName}}
+                        {{owner.lastName}}
+                      </option>
+                    </select>
+                    <div *ngIf="submitted && f['owner'].errors" class="invalid-feedback">
+                      <div *ngIf="f['owner'].errors.required">owner is required</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-form-label" for="domaine">مجال الإستغلال</label>
+                    <select ng-model="selectedItem" class="form-control" placeholder="مجال الإستغلال"
+                      autocomplete="مجال الإستغلال" formControlName="domaine">
+                      <!-- [ngClass]="{ 'is-invalid': submitted && f.domaine.errors, 'is-valid': f.domaine.touched && !f.domaine.errors }"> -->
+                      <option value="application">منظومة </option>
+                      <option value="bureautique">مكتبي</option>
+                      <option value="internet"> أنترنات</option>
+                    </select>
+                    <div *ngIf="submitted && f['domaine'].errors" class="invalid-feedback">
+                      <div *ngIf="f['domaine'].errors.required">domaine is required</div>
+                    </div>
+                  </div>
+                  <div *ngIf="matForm.value.domaine =='application'">
+                    <div class="form-group">
+                      <label class="col-form-label" for="application"> اسم المنظومة</label>
+                      <select ng-model="selectedItem" class="form-control" placeholder="اسم المنظومة"
+                        autocomplete="اسم المنظومة" formControlName="application">
+                        <!-- [ngClass]="{ 'is-invalid': submitted && f.application.errors, 'is-valid': f.application.touched && !f.application.errors }"> -->
+                        <option *ngFor="let app of myApps" value="{{app._id}}">{{app.application}}</option>
+                      </select>
+
+                      <div *ngIf="submitted && f['application'].errors" class="invalid-feedback">
+                        <div *ngIf="f['application'].errors.required">application is required</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <div class="custom-control custom-checkbox">
@@ -162,21 +161,6 @@
                     (click)="onReset()">Reset</button>
                 </div>
               </form>
-            </div>
-            <div class="col-md-6">
-              <div class="card bg-secondary" [ngClass]="{ 'bg-info' : matForm.valid }">
-                <div class="card-body">
-                  <pre>Value: <code>{{ matForm.value | json }}</code></pre>
-                  <p>
-                    Status: {{ matForm.status }}
-                  </p>
-                  <p>
-                    Errors: {{ matForm.errors | json }}
-
-                  </p>
-                </div>
-
-              </div>
             </div>
           </div>
         </div>

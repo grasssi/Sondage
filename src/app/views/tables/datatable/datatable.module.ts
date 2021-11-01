@@ -17,7 +17,8 @@ import { DatatableRoutingModule } from './datatable-routing.module';
     CommonModule,
     DataTableModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   declarations: [
     DataTableComponent,

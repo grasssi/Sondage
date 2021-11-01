@@ -18,9 +18,9 @@
               <h6>Simple Form</h6>
               <form [formGroup]="serviceForm" novalidate (ngSubmit)="onSubmit()" class="needs-validation">
                 <div class="form-group">
-                  <label class="col-form-label" for="firstName">Nom de Service</label>
+                  <label class="col-form-label" for="firstName">إسم المصلحة أو الوحدة</label>
                   <input class="form-control" id="nomService" type="text" formControlName="nomService"
-                    placeholder="Name of Service" autocomplete="given-name" required autofocus
+                    placeholder="إسم" autocomplete="إسم" required autofocus
                     [ngClass]="{ 'is-invalid': submitted && f.nomService.errors, 'is-valid': f.nomService.touched && !f.nomService.errors }" />
                   <div *ngIf="submitted && f['nomService'].errors" class="invalid-feedback">
                     <div *ngIf="f['nomService'].errors.required">Name of Service is required</div>
@@ -28,23 +28,11 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="col-form-label" for="owner">Owners</label>
-                  <!-- <div class="card-body">
-                     <fieldset class="form-group">
-                      <ng-select
-                      class="bootstrap"
-                      placeholder="Choose your favorite country"
-                      [options]="myRes(0)._id"
-                      [multiple]="true"
-                      [(ngModel)]="owner"
-                      formControlName="owner"
-                       required></ng-select>
-                    </fieldset>
-                  </div> -->
+                  <label class="col-form-label" for="owner">الأفراد</label>
                   <select ng-model="selectedItem" class="form-control" data-live-search="true" multiple
-                    placeholder="owner" autocomplete="owner" formControlName="owner" required
+                    placeholder="الأفراد" autocomplete="الأفراد" formControlName="owner" required
                     [ngClass]="{ 'is-invalid': submitted && f.owner.errors, 'is-valid': f.owner.touched && !f.owner.errors }">
-                    <option *ngFor="let owner of myRes" value="{{owner._id}}">{{owner.firstName}} {{owner.lastName}}
+                    <option *ngFor="let owner of allownersws" value="{{owner._id}}">{{owner.firstName}} {{owner.lastName}}
                     </option>
                   </select>
                   <div *ngIf="submitted && f['owner'].errors" class="invalid-feedback">

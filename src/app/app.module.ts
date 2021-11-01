@@ -36,6 +36,7 @@ import { ChangepasswordComponent } from './changepassword/changepassword.compone
 import { TokenInterceptor } from './services/token.interceptor';
 import { ValidatorsModule } from "ngx-validators";
 import { SharedModule } from './views/shared/shared.module';
+import { AddApplicationComponent } from './views/applications/components/add-application/add-application.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -66,6 +67,7 @@ import { SharedModule } from './views/shared/shared.module';
     RegisterComponent,
     ResetpasswordComponent,
     ChangepasswordComponent,
+    AddApplicationComponent,
 
 
   ],

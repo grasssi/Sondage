@@ -21,7 +21,8 @@ import { SelectModule } from 'ng-select';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    SelectModule
+    SelectModule,
+
 
   ],
   exports:[

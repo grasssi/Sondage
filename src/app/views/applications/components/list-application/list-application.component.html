@@ -18,17 +18,20 @@
         #mf="mfDataTable" [mfRowsOnPage]="10">
         <thead>
           <tr>
-            <th style="width: 20%">
-              <mfDefaultSorter by="FirstName">الإسم</mfDefaultSorter>
-            </th>
-            <th style="width: 20%">
-              <mfDefaultSorter by="LastName">القب</mfDefaultSorter>
+                       <th style="width: 10%">
+              <mfDefaultSorter by="Service">المستفيد</mfDefaultSorter>
             </th>
             <th style="width: 10%">
-              <mfDefaultSorter by="email">البريد الإلكتروني</mfDefaultSorter>
+              <mfDefaultSorter by="Service">المنظومة</mfDefaultSorter>
             </th>
             <th style="width: 10%">
-              <mfDefaultSorter by="Service">الوحدة</mfDefaultSorter>
+              <mfDefaultSorter by="Service">الوضعية</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+              <mfDefaultSorter by="Service">نسبة الجاهزية الشهرية</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+              <mfDefaultSorter by="Service">سبب عدم الجاهزية</mfDefaultSorter>
             </th>
             <th style="width: 10%">
               <mfDefaultSorter>Action</mfDefaultSorter>
@@ -37,10 +40,20 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of mf.data">
-            <td>{{item.firstName}}</td>
-            <td class="text-left">{{item.lastName}}</td>
-            <td>{{item.email}}</td>
-            <td>{{item.service.nomService}}</td>
+            <td>{{item.type.type}}</td>
+            <td class="text-left">{{item.Marque.marque}}</td>
+            <td>{{item.SerialNumber}}</td>
+            <td>
+              <label [ngClass]="{'badge badge-success': item.situation === 'عملياتي',
+             'badge badge-secondary': item.situation === 'مخزون',
+             'badge badge-danger': item.situation === 'غير عملياتي'}">{{item.situation}}</label>
+            </td>
+            <td>{{item.ram?.capacite}}</td>
+            <td>{{item.systeme?.systeme}}</td>
+            <td>{{item.service?.nomService}}</td>
+            <td>{{item.owner?.firstName}} {{item.owner?.lastName}}</td>
+            <td>{{item.domaine}}</td>
+            <td>{{item.application?.application}}</td>
             <td>
               <button type="button" [routerLink]="['/owners/update',item._id]" class="btn btn-info"><i
                   class="fa fa-refresh fa-lgs"></i>

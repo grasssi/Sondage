@@ -2,11 +2,20 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { TableData } from '../views/tables/datatable/datatable.service';
 import { throwError } from 'rxjs';
+export interface AppData {
+
+  service: string,
+  domaine: string,
+  application: string,
+  situation: string
+}
+export interface TableData extends Array<AppData> { }
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class ApplicationService {
   baseUrl = environment.baseUrl;
 

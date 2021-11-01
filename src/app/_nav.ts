@@ -79,6 +79,27 @@ export const navItems: NavData[] = [
   },
   {
     title: true,
+    name: 'منظومات جيش الطيران'
+  },
+  {
+  name: 'المنظومات',
+    url: '/applications',
+    icon: 'icon-drop',
+    children: [
+      {
+        name: 'قائمة شاملة',
+        url: '/applications/listapplications',
+        icon: 'icon-puzzle'
+      },
+      {
+        name: 'إضافة منظومة',
+        url: '/applications/addapplication',
+        icon: 'icon-puzzle'
+      },
+    ]
+  },
+  {
+    title: true,
     name: 'القاعدة الجوية'
   },
   {
@@ -98,6 +119,28 @@ export const navItems: NavData[] = [
       },
     ]
   },
+  {
+    name: 'الأفراد',
+      url: '/owners',
+      icon: 'cui-user icons',
+      children: [
+        {
+          name: 'قائمة شاملة',
+          url: '/owners/',
+          icon: 'icon-puzzle'
+        },
+        {
+          name: 'الأفراد حسب الوحدة',
+          url: '/owners/listownersByservice',
+          icon: 'icon-puzzle'
+        },
+        {
+          name: 'إضافة أفراد',
+          url: '/owners/addowner',
+          icon: 'icon-puzzle'
+        },
+      ]
+    },
   {
     name: 'Typography',
     url: '/theme/typography',

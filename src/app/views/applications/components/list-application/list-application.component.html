@@ -18,35 +18,20 @@
         #mf="mfDataTable" [mfRowsOnPage]="10">
         <thead>
           <tr>
-            <th style="width: 20%">
-              <mfDefaultSorter by="FirstName">العتاد</mfDefaultSorter>
-            </th>
-            <th style="width: 20%">
-              <mfDefaultSorter by="LastName">نوع العتاد</mfDefaultSorter>
+                       <th style="width: 10%">
+              <mfDefaultSorter by="Service">المستفيد</mfDefaultSorter>
             </th>
             <th style="width: 10%">
-              <mfDefaultSorter by="Service">الرقم التسلسلي</mfDefaultSorter>
+              <mfDefaultSorter by="Service">المنظومة</mfDefaultSorter>
             </th>
             <th style="width: 10%">
               <mfDefaultSorter by="Service">الوضعية</mfDefaultSorter>
             </th>
             <th style="width: 10%">
-              <mfDefaultSorter by="email">الذاكرة العشوائية</mfDefaultSorter>
+              <mfDefaultSorter by="Service">نسبة الجاهزية الشهرية</mfDefaultSorter>
             </th>
             <th style="width: 10%">
-              <mfDefaultSorter by="Service">نضام التشغيل</mfDefaultSorter>
-            </th>
-            <th style="width: 10%">
-              <mfDefaultSorter by="Service">المصلحة</mfDefaultSorter>
-            </th>
-            <th style="width: 10%">
-              <mfDefaultSorter by="Service">المسؤول</mfDefaultSorter>
-            </th>
-            <th style="width: 10%">
-              <mfDefaultSorter by="Service">مجال الإستغلال</mfDefaultSorter>
-            </th>
-            <th style="width: 10%">
-              <mfDefaultSorter by="Service">اسم المنظومة</mfDefaultSorter>
+              <mfDefaultSorter by="Service">سبب عدم الجاهزية</mfDefaultSorter>
             </th>
             <th style="width: 10%">
               <mfDefaultSorter>Action</mfDefaultSorter>
@@ -54,7 +39,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of mf.data | dataFilter : filterQuery"  >
+          <tr *ngFor="let item of mf.data">
             <td>{{item.type.type}}</td>
             <td class="text-left">{{item.Marque.marque}}</td>
             <td>{{item.SerialNumber}}</td>

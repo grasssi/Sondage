@@ -115,7 +115,12 @@ export const routes: Routes = [
       },
       {
         path: 'informatiques',
-         loadChildren: () => import('./views/informatiques/informatiques.module').then(m => m.InformatiquesModule) },
+        loadChildren: () => import('./views/informatiques/informatiques.module').then(m => m.InformatiquesModule)
+      },
+      {
+        path: 'applications',
+        loadChildren: () => import('./views/applications/applications.module').then(m => m.ApplicationsModule)
+      },
     ]
   },
   { path: '**', component: P404Component }

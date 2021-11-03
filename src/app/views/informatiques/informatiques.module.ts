@@ -12,7 +12,8 @@ import { AddMaterielComponent } from './components/add-materiel/add-materiel.com
   declarations: [
     InformatiquesComponent,
     ListeMaterielComponent,
-    AddMaterielComponent
+    AddMaterielComponent,
+
   ],
   imports: [
     CommonModule,

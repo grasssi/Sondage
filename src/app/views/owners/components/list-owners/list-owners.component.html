@@ -19,16 +19,16 @@
         <thead>
           <tr>
             <th style="width: 20%">
-              <mfDefaultSorter by="FirstName">Firstname</mfDefaultSorter>
+              <mfDefaultSorter by="FirstName">الإسم</mfDefaultSorter>
             </th>
             <th style="width: 20%">
-              <mfDefaultSorter by="LastName">Lastname</mfDefaultSorter>
+              <mfDefaultSorter by="LastName">القب</mfDefaultSorter>
             </th>
             <th style="width: 10%">
-              <mfDefaultSorter by="email">Email</mfDefaultSorter>
+              <mfDefaultSorter by="email">البريد الإلكتروني</mfDefaultSorter>
             </th>
             <th style="width: 10%">
-              <mfDefaultSorter by="Service">Service</mfDefaultSorter>
+              <mfDefaultSorter by="Service">الوحدة</mfDefaultSorter>
             </th>
             <th style="width: 10%">
               <mfDefaultSorter>Action</mfDefaultSorter>
@@ -40,7 +40,7 @@
             <td>{{item.firstName}}</td>
             <td class="text-left">{{item.lastName}}</td>
             <td>{{item.email}}</td>
-            <td>{{item.service}}</td>
+            <td>{{item.service.nomService}}</td>
             <td>
               <button type="button" [routerLink]="['/owners/update',item._id]" class="btn btn-info"><i
                   class="fa fa-refresh fa-lgs"></i>

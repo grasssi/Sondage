@@ -9,21 +9,20 @@ export class ListeMaterielComponent implements OnInit {
   public filterQuery = '';
   error: any;
   public data: TableData;
-  constructor(private infoService: InformatiqueService) {
-    const res=this.infoService.allmatInfos().subscribe(
-      (data: TableData) => {
-        setTimeout(() => {
-          this.data = [...data];
-        }, 1000);
-      }, // success path
-
-      error => this.error = error // error path
-
-    );
-  }
-
-  ngOnInit(): void {
-
+  constructor(private infoService: InformatiqueService) {}
+    
+    ngOnInit(): void {
+      const res=this.infoService.allmatInfos().subscribe(
+        (data: TableData) => {
+          setTimeout(() => {
+            this.data = [...data];
+          }, 1000);
+        }, // success path
+  
+        error => this.error = error // error path
+  
+      );
+      
 
   }
 

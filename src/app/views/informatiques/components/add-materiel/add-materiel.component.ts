@@ -30,16 +30,16 @@ export class AddMaterielComponent implements OnInit {
   myfindMarques: any;
   myOwners: any;
   matForm = new FormGroup({
-    type: new FormControl(''),
-    Marque: new FormControl(''),
-    service: new FormControl(''),
-    SerialNumber: new FormControl(''),
-    owner: new FormControl(''),
-    ram: new FormControl(''),
-    systeme: new FormControl(''),
-    domaine: new FormControl(''),
-    application: new FormControl(''),
-    situation: new FormControl(''),
+    type: new FormControl(),
+    Marque: new FormControl(),
+    service: new FormControl(),
+    SerialNumber: new FormControl(),
+    owner: new FormControl(),
+    ram: new FormControl(),
+    systeme: new FormControl(),
+    domaine: new FormControl(),
+    application: new FormControl(),
+    situation: new FormControl(),
     accept: new FormControl(false, Validators.requiredTrue)
   });
 
@@ -154,20 +154,14 @@ export class AddMaterielComponent implements OnInit {
     );
   }
 
-  affectService(body: any) {
-    //   this.ownerservice.affectService(body).subscribe((response: any) => { },
-    //     (error: any) => {
-    //       this.toasterService.pop('error', 'Error', error.error.message);
-    //       console.log(error);
-    //     }
-    //   );
-  }
   addmatInfo() {
     this.submitted = true;
     if (this.matForm.invalid) {
       return
     };
     //with Services
+    console.log('tetstsst=', this.matForm.value);
+
     const addowner = this.infoservice.addmatInfo(this.matForm.value).subscribe((response: any) => {
       this.toasterService.pop('success', 'Success Login', response.message);
       // this.affectService(this.matForm.value)

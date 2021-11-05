@@ -18,7 +18,6 @@ export class AddOwnerComponent implements OnInit {
   ownerForm = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
     service: new FormControl(''),
     accept: new FormControl(false, Validators.requiredTrue)
   });
@@ -39,11 +38,9 @@ export class AddOwnerComponent implements OnInit {
   get f() { return this.ownerForm.controls; }
   allservices() {
     this.serviceservice.allServices().subscribe((response: any) => {
-      this.myRes = response
-      this.toasterService.pop('success', 'Success Login', response.message);
+      this.myRes = response      
     },
       (error: any) => {
-        this.toasterService.pop('error', 'Error', error.error.message);
         console.log(error);
       }
     );

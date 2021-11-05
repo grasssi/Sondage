@@ -8,13 +8,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedRoutingModule } from './shared-routing.module';
 import { SelectModule } from 'ng-select';
+import { EmptyPipe } from '../../pipes/empty.pipe';
 
 
 @NgModule({
   declarations: [
-    DataFilterPipe
+    DataFilterPipe,
+    EmptyPipe
   ],
-    imports: [
+  imports: [
     CommonModule,
     SharedRoutingModule,
     DataTableModule,
@@ -22,8 +24,8 @@ import { SelectModule } from 'ng-select';
     HttpClientModule,
     ReactiveFormsModule,
     SelectModule,
-
-
+    
+    
   ],
   exports:[
     DataTableModule,
@@ -31,7 +33,8 @@ import { SelectModule } from 'ng-select';
     HttpClientModule,
     ReactiveFormsModule,
     DataFilterPipe,
-    SelectModule
+    SelectModule,
+    EmptyPipe
   ]
 })
 export class SharedModule { }

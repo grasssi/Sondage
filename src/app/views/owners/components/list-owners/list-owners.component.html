@@ -3,14 +3,14 @@
     <div class="card-header">
       Users
     </div>
-    <div class="card-body">
+    <div class="card-body"  dir="rtl">
       <div class="row mb-3">
         <div class="col-md-4 offset-md-8">
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fa fa-search"></i></span>
             </div>
-            <input type="text" class="form-control" [(ngModel)]="filterQuery" placeholder="Search by name" />
+            <input type="text" class="form-control" [(ngModel)]="filterQuery" placeholder="بحث......." />
           </div>
         </div>
       </div>
@@ -18,20 +18,17 @@
         #mf="mfDataTable" [mfRowsOnPage]="10">
         <thead>
           <tr>
-            <th style="width: 20%">
+            <th style="width: 10%">
               <mfDefaultSorter by="FirstName">الإسم</mfDefaultSorter>
             </th>
-            <th style="width: 20%">
-              <mfDefaultSorter by="LastName">القب</mfDefaultSorter>
-            </th>
             <th style="width: 10%">
-              <mfDefaultSorter by="email">البريد الإلكتروني</mfDefaultSorter>
+              <mfDefaultSorter by="LastName">القب</mfDefaultSorter>
             </th>
             <th style="width: 10%">
               <mfDefaultSorter by="Service">الوحدة</mfDefaultSorter>
             </th>
             <th style="width: 10%">
-              <mfDefaultSorter>Action</mfDefaultSorter>
+              <mfDefaultSorter>تحيين</mfDefaultSorter>
             </th>
           </tr>
         </thead>
@@ -39,7 +36,6 @@
           <tr *ngFor="let item of mf.data">
             <td>{{item.firstName}}</td>
             <td class="text-left">{{item.lastName}}</td>
-            <td>{{item.email}}</td>
             <td>{{item.service.nomService}}</td>
             <td>
               <button type="button" [routerLink]="['/owners/update',item._id]" class="btn btn-info"><i

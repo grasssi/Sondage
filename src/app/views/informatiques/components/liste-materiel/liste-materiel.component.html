@@ -3,7 +3,7 @@
     <div class="card-header">
       Users
     </div>
-    <div class="card-body">
+    <div class="card-body"  dir="rtl">
       <div class="row mb-3">
         <div class="col-md-4 offset-md-8">
           <div class="input-group">
@@ -16,12 +16,12 @@
       </div>
       <table class="table table-striped table-hover table-responsive-lg" [mfData]="data | dataFilter : filterQuery"
         #mf="mfDataTable" [mfRowsOnPage]="10">
-        <thead>
+        <thead  style="text-align: center">
           <tr>
-            <th style="width: 20%">
+            <th style="width: 10%">
               <mfDefaultSorter by="FirstName">العتاد</mfDefaultSorter>
             </th>
-            <th style="width: 20%">
+            <th style="width: 10%">
               <mfDefaultSorter by="LastName">نوع العتاد</mfDefaultSorter>
             </th>
             <th style="width: 10%">
@@ -49,26 +49,26 @@
               <mfDefaultSorter by="Service">اسم المنظومة</mfDefaultSorter>
             </th>
             <th style="width: 10%">
-              <mfDefaultSorter>Action</mfDefaultSorter>
+              <mfDefaultSorter>تحيين</mfDefaultSorter>
             </th>
           </tr>
         </thead>
-        <tbody>
-          <tr *ngFor="let item of mf.data | dataFilter : filterQuery"  >
+        <tbody  style="text-align: center">
+          <tr *ngFor="let item of mf.data | dataFilter : filterQuery"    >
             <td>{{item.type.type}}</td>
-            <td class="text-left">{{item.Marque.marque}}</td>
+            <td class="text-left">{{item.Marque.marque | uppercase}}</td>
             <td>{{item.SerialNumber}}</td>
             <td>
               <label [ngClass]="{'badge badge-success': item.situation === 'عملياتي',
              'badge badge-secondary': item.situation === 'مخزون',
              'badge badge-danger': item.situation === 'غير عملياتي'}">{{item.situation}}</label>
             </td>
-            <td>{{item.ram?.capacite}}</td>
-            <td>{{item.systeme?.systeme}}</td>
-            <td>{{item.service?.nomService}}</td>
-            <td>{{item.owner?.firstName}} {{item.owner?.lastName}}</td>
-            <td>{{item.domaine}}</td>
-            <td>{{item.application?.application}}</td>
+            <td>{{item.ram?.capacite | empty  }}</td>
+            <td>{{item.systeme?.systeme | empty }}</td>
+            <td>{{item.service?.nomService | empty }}</td>
+            <td>{{item.owner?.firstName | empty }} {{item.owner?.lastName }}</td>
+            <td>{{item.domaine | empty }}</td>
+            <td>{{item.application?.application | empty }}</td>
             <td>
               <button type="button" [routerLink]="['/owners/update',item._id]" class="btn btn-info"><i
                   class="fa fa-refresh fa-lgs"></i>

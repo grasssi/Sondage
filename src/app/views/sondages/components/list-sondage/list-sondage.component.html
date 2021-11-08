@@ -1,0 +1,80 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+      Sondage
+    </div>
+    <div class="card-body" dir="rtl">
+      <div class="row mb-3">
+        <div class="col-md-4 offset-md-8">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fa fa-search"></i></span>
+            </div>
+            <input type="text" class="form-control" [(ngModel)]="filterQuery" placeholder="recherche......." />
+          </div>
+        </div>
+      </div>
+      <table class="table table-striped table-hover table-responsive-lg" [mfData]="data | dataFilter : filterQuery"
+        #mf="mfDataTable" [mfRowsOnPage]="10">
+        <thead>
+          <tr>
+            <th style="width: 10%">
+              <mfDefaultSorter by="FirstName">Sujet</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+              <mfDefaultSorter by="LastName">description</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+              <mfDefaultSorter by="Service">Vote</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+              <mfDefaultSorter>Confirmation </mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+              <mfDefaultSorter>Pourcentagae</mfDefaultSorter>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of mf.data; let i=index">
+            <td>{{item.titre}}</td>
+            <td class="text-left">{{item.describe}}</td>
+            <td>
+              <form [formGroup]="repForm">
+                <div class="form-group">
+                  <select #rate ng-model="selectedItem" class="form-control" placeholder="reponse"
+                    autocomplete="reponse" formControlName="reponse" required>
+                    <option selected ></option>
+                    <option value="1">oui</option>
+                    <option value="0">non</option>
+                    <p *ngIf="rate.value == 'oui'">oui</p>
+                    <p *ngIf="rate.value == 'non'">non</p>
+                  </select>
+                </div>
+              </form>
+
+            </td>
+            <td>
+              <button class="btn btn-success" id="bt" 
+              [disabled]="!repForm.valid"
+              (click)="affect(item._id);clickFunc()"><i
+                  class="fa form-validation fa-lg">
+                  Confirmer</i>
+              </button>
+            </td>
+
+            <td class="text-left">{{item.response | empty}}</td>
+
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5">
+              <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>

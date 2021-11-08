@@ -105,21 +105,10 @@ export const routes: Routes = [
         path: 'users',
         loadChildren: () => import('./views/users/users.module').then(m => m.UsersModule)
       },
+      
       {
-        path: 'owners',
-        loadChildren: () => import('./views/owners/owners.module').then(m => m.OwnersModule)
-      },
-      {
-        path: 'services',
-        loadChildren: () => import('./views/services/services.module').then(m => m.ServicesModule)
-      },
-      {
-        path: 'informatiques',
-        loadChildren: () => import('./views/informatiques/informatiques.module').then(m => m.InformatiquesModule)
-      },
-      {
-        path: 'applications',
-        loadChildren: () => import('./views/applications/applications.module').then(m => m.ApplicationsModule)
+        path: 'sondages',
+        loadChildren: () => import('./views/sondages/sondages.module').then(m => m.SondagesModule)
       },
     ]
   },

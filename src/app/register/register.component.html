@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <i class="icon-note"></i> Form Validation
+          <i class="icon-note"></i> Register Validation
           <a class="badge badge-danger" href="https://coreui.io/pro/">CoreUI Pro Component</a>
           <div class="card-header-actions">
             <a class="card-header-action" href="https://angular.io/guide/form-validation" target="_blank">
@@ -11,7 +11,7 @@
             </a>
           </div>
         </div>
-        <div class="card-body">Angular Form Validation
+        <div class="card-body">Register
           <hr>
           <div class="row">
             <div class="col-md-6">
@@ -44,21 +44,7 @@
                     <div *ngIf="f['email'].errors.required">Email is required</div>
                     <div *ngIf="f['email'].errors.email">{{formErrors.email.email}}</div>
                   </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-form-label" for="role">Role</label>
-                  <select ng-model="selectedItem" class="form-control" placeholder="role" autocomplete="role"
-                    formControlName="role" required
-                    [ngClass]="{ 'is-invalid': submitted && f.role.errors, 'is-valid': f.role.touched && !f.role.errors }">
-                    <option value=""></option>
-                    <option value="admin">admin</option>
-                    <option value="user">user</option>
-                  </select>
-                  <div *ngIf="submitted && f['role'].errors" class="invalid-feedback">
-                    <div *ngIf="f['role'].errors.required">Role is required</div>
-                  </div>
-                </div>
+                </div>              
                 <div class="row">
                   <div class="form-group col-md-6">
                     <label class="col-form-label" for="password">Password</label>
@@ -101,20 +87,7 @@
                     (click)="onReset()">Reset</button>
                 </div>
               </form>
-            </div>
-            <div class="col-md-6">
-              <div class="card bg-secondary" [ngClass]="{ 'bg-info' : registerForm.valid }">
-                <div class="card-body">
-                  <pre>Value: <code>{{ registerForm.value | json }}</code></pre>
-                  <p>
-                    Status: {{ registerForm.status }}
-                  </p>
-                  <p>
-                    Errors: {{ registerForm.errors | json }}
-                  </p>
-                </div>
-              </div>
-            </div>
+            </div>           
           </div>
         </div>
       </div>

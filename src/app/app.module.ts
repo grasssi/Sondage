@@ -1,4 +1,3 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
@@ -25,7 +24,7 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 
 // Import 3rd party components
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+//import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { ToasterModule, ToasterService } from 'angular2-toaster';
@@ -36,11 +35,10 @@ import { ChangepasswordComponent } from './changepassword/changepassword.compone
 import { TokenInterceptor } from './services/token.interceptor';
 import { ValidatorsModule } from "ngx-validators";
 import { SharedModule } from './views/shared/shared.module';
-import { AddApplicationComponent } from './views/applications/components/add-application/add-application.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   imports: [
-    BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     AppAsideModule,
@@ -49,7 +47,7 @@ import { AddApplicationComponent } from './views/applications/components/add-app
     AppHeaderModule,
     AppSidebarModule,
     PerfectScrollbarModule,
-    BsDropdownModule.forRoot(),
+   BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
     ToasterModule,
@@ -68,7 +66,6 @@ import { AddApplicationComponent } from './views/applications/components/add-app
     RegisterComponent,
     ResetpasswordComponent,
     ChangepasswordComponent,
-    AddApplicationComponent,
 
 
 

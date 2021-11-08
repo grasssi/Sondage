@@ -1,0 +1,84 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="icon-note"></i> Form Validation
+                    <a class="badge badge-danger" href="https://coreui.io/pro/">CoreUI Pro Component</a>
+                    <div class="card-header-actions">
+                        <a class="card-header-action" href="https://angular.io/guide/form-validation" target="_blank">
+                            <small class="text-muted">docs</small>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">Angular Form Validation
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Simple Form</h6>
+                            <form [formGroup]="ownerForm" novalidate (ngSubmit)="onSubmit()" class="needs-validation">
+                                <div class="form-group">
+                                    <label class="col-form-label" for="titre">Sujet</label>
+                                    <input class="form-control" id="titre" type="text" formControlName="titre"
+                                        placeholder="Sujet" autocomplete="Sujet" required autofocus
+                                        [ngClass]="{ 'is-invalid': submitted && f.titre.errors, 'is-valid': f.titre.touched && !f.titre.errors }" />
+                                    <div *ngIf="submitted && f['titre'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['titre'].errors.required">First Name is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label" for="describe">description</label>
+                                    <input class="form-control" id="describe" type="text" formControlName="describe"
+                                        placeholder="describe" autocomplete="describe" required
+                                        [ngClass]="{ 'is-invalid': submitted && f.describe.errors, 'is-valid': f.describe.touched && !f.describe.errors }" />
+                                    <div *ngIf="submitted && f['describe'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['describe'].errors.required">Last Name is required</div>
+                                    </div>
+                                </div>
+
+
+                                <!-- <div class="form-group">
+
+                                    <label class="col-md-3 col-form-label" for="response">la Reponse</label>
+
+                                    <select id="response" name="response" class="form-control" id="response"
+                                        formControlName="response" placeholder="Please select"
+                                        autocomplete="response" required autofocus
+                                        [ngClass]="{ 'is-invalid': submitted && f.response.errors, 'is-valid': f.response.touched && !f.response.errors }">
+                                        <option value="oui">Oui</option>
+                                        <option value="non">Non</option>
+                                    </select>
+                                    <div *ngIf="submitted && f['response'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['response'].errors.required">response is required</div>
+                                    </div>
+                                </div> -->
+
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="accept"
+                                            formControlName="accept" required
+                                            [ngClass]="{ 'is-invalid': submitted && f.accept.errors, 'is-valid': !f.accept.errors }" />
+                                        <label class="custom-control-label" for="accept">I accept the terms of
+                                            use</label>
+                                        <div *ngIf="submitted && f['accept'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['accept'].errors.required">You have to accept our Terms and
+                                                Conditions</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary mr-1" (click)="addSondage()"
+                                        [disabled]="ownerForm.pristine || ownerForm.invalid">Submit</button>
+                                    <button class="btn btn-success mr-1" type="submit"
+                                        [disabled]="ownerForm.valid">Validate</button>
+                                    <button class="btn btn-danger" type="reset"
+                                        [disabled]="ownerForm.pristine && !submitted" (click)="onReset()">Reset</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
